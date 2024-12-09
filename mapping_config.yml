@@ -1,0 +1,7 @@
+"old_version_files":
+  - 'C:\Users\pihltd\Documents\modeltest\cds500-model.yml'
+  - 'C:\Users\pihltd\Documents\modeltest\cds500-model-props.yml'
+"new_version_files":
+ - 'C:\Users\pihltd\Documents\modeltest\cds502-model.yml'
+ - 'C:\Users\pihltd\Documents\modeltest\cds502-model-props.yml'
+"mapping_file": 'C:\Users\pihltd\Documents\modeltest\CDS500_2_502_liftover.csv'
