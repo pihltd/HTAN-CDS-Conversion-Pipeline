@@ -3,5 +3,16 @@
 "submission_worksheet": 'CDS_HTAN_imaging_v24.8.1_combin'
 "output_directory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
 "target_model":
-  - 'C:\Users\pihltd\Documents\modeltest\cds502-model.yml'
-  - 'C:\Users\pihltd\Documents\modeltest\cds502-model-props.yml'
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model-props.yml"
+#Manual mapping is represented as old:new
+"manual":
+  "de-identification_method_type": "de_identification_method_type"
+  "de-identification_method_description": "de_identification_method_description"
+  "de-identification_software": "de_identification_software"
+  "treatment_outcome": "response"
+  "file_format": "file_type"
+  "imaging_modality": "image_modality"
+  "HTAN_Data_File_ID": "file_id"
+  "cancer_type": "primary_site"
+  

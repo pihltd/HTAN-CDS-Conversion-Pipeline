@@ -2,8 +2,18 @@ import pandas as pd
 import argparse
 from crdclib import crdclib
 import bento_mdf
-import sys
 
+def moveIt(old_column, loadsheets, mapping_df, cds_df, mapped=True, original=None):
+    mapping_row =mapping_df.loc[mapping_df['lift_from_property'] == old_column]
+    new_column = mapping_row.iloc[0]['lift_to_property']
+    new_node = mapping_row.iloc[0]['lift_to_node']
+    temp_df = loadsheets[new_node]
+    if mapped:
+        temp_df[new_column] = cds_df[old_column].copy()
+    else:
+        temp_df[new_column] = cds_df[original].copy()
+    loadsheets[new_node] = temp_df
+    return loadsheets
 
 def main(args):
     configs = crdclib.readYAML(args.configfile)
@@ -22,49 +32,45 @@ def main(args):
     nodes = list(mapping_df['lift_to_node'].unique())
     #This will be a dictionary of dataframes
     loadsheets = {}
+    orphans = []
     for node in nodes:
         props = target_nodes[node].props
         proplist = list(props.keys())
         node_df = pd.DataFrame(columns=proplist)
         loadsheets[node] = node_df
         
-    #for node, df in loadsheets.items():
-    #    print(f"Node: {node}\nDataFrame: {df}")
-    #sys.exit(0)
         
     #Get a list of the columns in the CDS submission sheet
     cds_columns = list(cds_df.columns)
     #Loop through the columns
-    #print(list(loadsheets.keys()))
-    #sys.exit(0)
     for cds_column in cds_columns:
-        #print(f"CDS Column: {cds_column}")
-        if cds_column in mapping_df['lift_from_property'].unique():
-            mapping_row =mapping_df.loc[mapping_df['lift_from_property'] == cds_column]
-            #mapping_row = mapping_df.loc[[mapping_df['lift_from_property'] == cds_column]]
-            print(mapping_row)
-            new_column = mapping_row.iloc[0]['lift_to_property']
-            new_node = mapping_row.iloc[0]['lift_to_node']
-            print(f"Old Column: {cds_column}\tNew Column: {new_column}\t New Node: {new_node}")
-            #print(loadsheets[new_node])
-            #print(mapping_row)
-            #loadsheets[new_node].loc[:, new_column] = cds_df.loc[:, cds_column]
-            temp_df = loadsheets[new_node]
-            #print(temp_df)
-            temp_df[new_column] = cds_df[cds_column].copy()
-            loadsheets[new_node] = temp_df
-            
+        # Currently, manual takes precedence over automated
+        if cds_column in configs['manual'].keys():
+            manual_field = configs['manual'][cds_column]
+            loadsheets = moveIt(manual_field, loadsheets, mapping_df, cds_df, False, cds_column)
+        elif cds_column in mapping_df['lift_from_property'].unique():
+            loadsheets = moveIt(cds_column, loadsheets, mapping_df, cds_df)
         else:
-            print(f"ORPHAN PROPERTY: {cds_column}")
+            orphans.append(cds_column)
+            
+    
     #Since the Excel sheet is flattened data, we need to de-dupe the individual loading sheets
     for node, df in loadsheets.items():
         temp_df = df.drop_duplicates()
         loadsheets[node] = temp_df
     
     #And that should do it, just write out the DH style load sheets
+    # Ignore any dataframes that are empty
     for node, df in loadsheets.items():
-        filename = configs['output_directory']+"CDS_"+node+"_template.csv"
-        df.to_csv(filename, sep="\t", index=False)
+        if len(df) > 0:
+            filename = configs['output_directory']+"CDS_"+node+"_template.csv"
+            df.to_csv(filename, sep="\t", index=False)
+    #Print out the orphan fields
+    if len(orphans) > 0:
+        orphanfile = configs['output_directory']+"OrphanReport.csv"
+        with open(orphanfile,"w") as f:
+            for orphan in orphans:
+                f.write(f"{orphan}\n")
         
     
 
