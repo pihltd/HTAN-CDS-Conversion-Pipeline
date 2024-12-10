@@ -4,4 +4,37 @@
 "new_version_files":
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model.yml"
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model-props.yml"
-"mapping_file": 'C:\Users\pihltd\Documents\modeltest\CDS500_2_502_liftover.csv'
+"mapping_file": '.\examples\CDS_500_2_502_liftover.csv'
+"relationship_columns":
+  "diagnosis":
+    - participant.study_participant_id
+  "file":
+    - "study.phs_accession"
+    - "particpant.study_participant_id"
+    - "sample.sample_id"
+  "genomic_info":
+    - "file.file_id"
+  "image":
+    - "file.file_id"
+  "MultiplexMicroscopy":
+    - "image.study_link_id"
+  "NonDICOMCTimages":
+    - "image.study_link_id"
+  "NonDICOMMRimages":
+    - "image.study_link_id"
+  "NonDICOMpathologyImages":
+   - "image.study_link_id"
+  "NonDICOMPETimages":
+    - "image.study_link_id"
+  "NonDICOMradiologyAllModalities":
+    - "image.study_link_id"
+  "participant":
+    - "study.phs_accession"
+  "proteomic":
+    - "file.file_id"
+  "sample":
+    - "particpant.study_participant_id"
+  "study":
+    - "program.program_acronym"
+  "treatment":
+    - "particpant.study_participant_id"

@@ -32,14 +32,15 @@ def cdeCheck(old_node, old_prop, new_node, new_prop, old_mdf, new_mdf):
         new_cde = getCDEInfo(new_concept)
     else:
         new_cde = {'cdeid':None, 'cdeversion': None}
-    if (old_cde['cdeid'] == new_cde['cdeid']) and (old_cde['cdeversion'] == new_cde['cdeversion']):
+    #Need to check for blanks in cde id
+    if(old_cde['cdeid'] == None) or (old_cde['cdeversion'] == None):
+        relation = "Missing CDE"
+    elif (old_cde['cdeid'] == new_cde['cdeid']) and (old_cde['cdeversion'] == new_cde['cdeversion']):
         relation = "Match CDE and Version"
     elif (old_cde['cdeid'] == new_cde['cdeid']) and (old_cde['cdeversion'] != new_cde['cdeversion']):
         relation = "Version mismatch"
     elif (old_cde['cdeid'] != new_cde['cdeid']):
         relation = "CDE mismatch"
-    elif(old_cde['cdeid'] == None) or (old_cde['cdeversion'] == None):
-        relation = "Missing CDE"
     else:
         relation = "Indeterminant"
     return {'old_cde': old_cde['cdeid'], 'old_version': old_cde['cdeversion'], 'new_cde': new_cde['cdeid'], 'new_version': new_cde['cdeversion'], 'relation':relation}
@@ -79,12 +80,7 @@ def main(args):
     print(f"New Model Version:\t{new_model_version}")
     
     old_nodes = old_mdf.model.nodes
-    new_nodes = new_mdf.model.nodes
-    
     old_nodes_list = list(old_nodes.keys())
-    #new_nodes_list = list(new_nodes.keys())
-    
-    #old_props = old_mdf.model.props
     new_props = new_mdf.model.props
     
     for old_node in old_nodes_list:
@@ -111,6 +107,16 @@ def main(args):
                                                          "lift_to_version": new_model_version, "lift_to_node": "Orphan", "lift_to_property":"Orphan", 
                                                          "lift_from_cde": "N/A", "lift_from_cdeversion": "N/A", "lift_to_cde": "N/A",
                                                          "lift_to_cdeversion": "N/A", "cde_relationship": "N/A"}
+            
+    # Finally, add the realtionship columns to the mapping file.  These aren't model dependent.  I think.
+    relations = configs['relationship_columns']
+    for node, rellist in relations.items():
+        for rel in rellist:
+            liftover_df.loc[len(liftover_df)] = {"lift_from_version": old_model_version, "lift_from_node": node, "lift_from_property": rel, 
+                                                         "lift_to_version": new_model_version, "lift_to_node": node, "lift_to_property":rel, 
+                                                         "lift_from_cde": "N/A", "lift_from_cdeversion": "N/A", "lift_to_cde": "N/A",
+                                                         "lift_to_cdeversion": "N/A", "cde_relationship": "N/A"}
+            
     
     #Print out the liftover files
     liftover_df.to_csv(configs['mapping_file'], sep="\t", index=False)

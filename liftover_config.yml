@@ -1,4 +1,4 @@
-"liftovermap": 'C:\Users\pihltd\Documents\modeltest\CDS500_2_502_liftover.csv'
+"liftovermap": '.\examples\CDS_500_2_502_liftover.csv'
 "submission_spreadsheet": 'C:\Users\pihltd\Documents\modeltest\liftover\CDS_HTAN_imaging_v24.8.1_combined_20240905.xlsx'
 "submission_worksheet": 'CDS_HTAN_imaging_v24.8.1_combin'
 "output_directory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
@@ -13,6 +13,54 @@
   "treatment_outcome": "response"
   "file_format": "file_type"
   "imaging_modality": "image_modality"
-  "HTAN_Data_File_ID": "file_id"
-  "cancer_type": "primary_site"
+"transforms":
+  "study_diagnosis_id":
+    - "participant": "study_participant_id"
+    - "diagnosis_id"
+    - "study_diagnosis_id"
+  "study_link_id":
+    - "file_id"
+  "MultiplexMicroscopy_id":
+  - "study_link_id"
+  "study_participant_id":
+    - "study": "phs_accession"
+    - "participant": "participant_id"
+  "treatement_id":
+    - "participant": "participant_id"
+    - "therapy": "therapeutic_agent"
+"relationship_columns":
+  "diagnosis":
+    - participant.study_participant_id
+  "file":
+    - "study.phs_accession"
+    - "particpant.study_participant_id"
+    - "sample.sample_id"
+  "genomic_info":
+    - "file.file_id"
+  "image":
+    - "file.file_id"
+  "MultiplexMicroscopy_id":
+    - "image.study_link_id"
+  "NonDICOMCTimages":
+    - "image.study_link_id"
+  "NonDICOMMRimages":
+    - "image.study_link_id"
+  "NonDICOMpathologyImages":
+   - "image.study_link_id"
+  "NonDICOMPETimages":
+    - "image.study_link_id"
+  "NonDICOMradiologyAllModalities":
+    - "image.study_link_id"
+  "participant":
+    - "study.phs_accession"
+  "proteomic":
+    - "file.file_id"
+  "sample":
+    - "particpant.study_participant_id"
+  "study":
+    - "program.program_acronym"
+  "treatment":
+    - "particpant.study_participant_id"
+  
+  
   
