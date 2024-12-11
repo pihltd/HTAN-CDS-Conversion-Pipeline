@@ -2,26 +2,32 @@ import pandas as pd
 import argparse
 from crdclib import crdclib
 import bento_mdf
+import uuid
 
-def moveIt(old_column, loadsheets, mapping_df, cds_df, mapped=True, original=None):
-    # TODO: Handle columns mapping to multiple locations
-    mapping_row =mapping_df.loc[mapping_df['lift_from_property'] == old_column]
-    new_column = mapping_row.iloc[0]['lift_to_property']
-    new_node = mapping_row.iloc[0]['lift_to_node']
-    temp_df = loadsheets[new_node]
-    if mapped:
-        temp_df[new_column] = cds_df[old_column].copy()
-    else:
-        temp_df[new_column] = cds_df[original].copy()
-    loadsheets[new_node] = temp_df
+def moveIt2(old_column, loadsheets, mapping_df, cds_df, mapped=True, original = None, logfile = None):
+    if logfile is not None:
+        f = open(logfile, "a")
+    # Create a new df based on the value of old_column
+    df = mapping_df.loc[mapping_df['lift_from_property'] == old_column]
+    for index, row in df.iterrows():
+        new_column = row['lift_to_property']
+        new_node = row['lift_to_node']
+        if logfile is not None:
+            f.write(f"Old Column: {old_column}\tNew Column: {new_column}\tNew Node: {new_node}\tNumber of rows: {str(len(df))}\n")
+        temp_df = loadsheets[new_node]
+        if mapped:
+            temp_df[new_column] = cds_df[old_column].copy()
+        else:
+            temp_df[new_column] = cds_df[original].copy()
+        loadsheets[new_node] = temp_df
     return loadsheets
+        
+
 
 def addColumns(cds_df, relations):
     for  rellist in relations.values():
         for column in rellist:
-            #print(f"Checking column {column}")
             if column not in cds_df.columns:
-                #print(f"Adding column {column} to cds_Df")
                 cds_df.loc[:, column] = None
                 
     return cds_df
@@ -31,50 +37,31 @@ def keyIt2(cds_df, relations):
     dbgap = cds_df.iloc[0]['phs_accession']
     for rellist in relations.values():
         for column in rellist:
-            #print(f"Checking {column}")
             for index, row in cds_df.iterrows():
                 if column == 'participant.study_participant_id':
-                    #print(f"Populating {column}")
+                    cds_df.at[index, 'participant.study_participant_id'] = dbgap+"|"+row['participant_id']
                     cds_df.at[index, 'study_participant_id'] = dbgap+"|"+row['participant_id']
                 elif column == "study.phs_accession":
-                    #print(f"Populating {column}")
                     cds_df.at[index, "study.phs_accession"] = dbgap
                 elif column == "sample.sample_id":
-                    #print(f"Populating {column}")
                     cds_df.at[index, "sample.sample_id"] = row['sample_id']
                 elif column == "file.file_id":
-                    #print(f"Populating {column}")
                     cds_df.at[index, "file.file_id"] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
+                    cds_df.at[index, "file_id"] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
+                    #cds_df.at[index, "MultiplexMicroscopy_id"] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
+                    #cds_df.at[index, "NonDICOMpathologyImages_id"] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
+                    cds_df.at[index, "MultiplexMicroscopy_id"] = uuid.uuid4()
+                    cds_df.at[index, "NonDICOMpathologyImages_id"] = uuid.uuid4()
                 elif column == "image.study_link_id":
-                    #print(f"Populating {column}")
+                    cds_df.at[index, 'image.study_link_id'] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
                     cds_df.at[index, 'study_link_id'] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
                 elif column == "program.program_acronym":
-                    #print(f"Populating {column}")
                     cds_df.at[index, "program.program_acronym"] = row['study_acronym']
+                #elif column == "study_diagnosis_id":
+                #    cds_df.at[index, "study_diagnosis_id"] = dbgap+"|"+row['participant_id']+"|"+row['site_of_resection_or_biopsy']
                     
     return cds_df
 
-def keyIt(cds_df):
-    #Transformations need to be done BEFORE we break it into individual sheets
-    dbgap = cds_df.iloc[0]['phs_accession']
-    newcols = ['study_participant_id','file_id', 'study_link_id', 'MultiplexMicroscopy_id', 'study_diagnosis_id', 'treatement_id']
-    for col in newcols:
-        cds_df.loc[:, col] = None
-    for index, row in cds_df.iterrows():
-        #study_participant_id
-        cds_df.at[index, 'study_participant_id'] = dbgap+"|"+row['participant_id']
-        #file_id
-        cds_df.at[index, 'file_id'] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum'] 
-        #study_link_id uses file_id
-        cds_df.at[index, 'study_link_id'] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
-        #MultiplexMicroscopy_id
-        cds_df.at[index, 'MultiplexMicroscopy_id'] = row['file_name']+"|"+str(row['file_size'])+"|"+row['md5sum']
-        # study_diagnosis_id
-        cds_df.at[index,'study_diagnosis_id'] = row['participant_id']+"|"+str(row['primary_diagnosis'])
-        # treatment_id
-        cds_df.at[index,'treatement_id'] = row['participant_id']+"|"+str(row['therapeutic_agents'])
-    
-    return cds_df
 
 def main(args):
     configs = crdclib.readYAML(args.configfile)
@@ -86,7 +73,11 @@ def main(args):
     cds_df = pd.read_excel(configs['submission_spreadsheet'], sheet_name=configs['submission_worksheet'])
     # All key fields need to be filled before we break up the sheet
     cds_df = addColumns(cds_df, configs['relationship_columns'])
+    cds_df = addColumns(cds_df, configs['required_columns'])
     cds_df = keyIt2(cds_df, configs['relationship_columns'])
+    cds_df = keyIt2(cds_df, configs['required_columns'])
+    keyreport = configs['output_directory']+"KeyAdditionReport.csv"
+    cds_df.to_csv(keyreport, sep="\t", index=False)
     
     #Read the target model
     target_mdf = bento_mdf.MDF(*configs['target_model'])
@@ -99,9 +90,15 @@ def main(args):
     # Orphans is a list of fields with no mapping
     orphans = []
     #Work through each node in the target model creating a dataframe
+    # Add the key fields to the dataframes, they're not in the model
+    keyfields = configs['relationship_columns']
     for node in nodes:
         props = target_nodes[node].props
         proplist = list(props.keys())
+        if node in keyfields.keys():
+            keylist = keyfields[node]
+            for keyfield in keylist:
+                proplist.append(keyfield)
         node_df = pd.DataFrame(columns=proplist)
         loadsheets[node] = node_df
         
@@ -109,18 +106,16 @@ def main(args):
     #Get a list of the columns in the CDS submission sheet
     cds_columns = list(cds_df.columns)
     #Loop through the columns
+    #Temp log file
+    movelog = configs['output_directory']+"MoveReport.txt"
     for cds_column in cds_columns:
-        print(f"Starting to map {cds_column}")
         # Currently, manual takes precedence over automated
         if cds_column in configs['manual'].keys():
-            print(f"{cds_column} is in manual mapping")
             manual_field = configs['manual'][cds_column]
-            loadsheets = moveIt(manual_field, loadsheets, mapping_df, cds_df, False, cds_column)
+            loadsheets = moveIt2(manual_field, loadsheets, mapping_df, cds_df, False, cds_column,movelog)
         elif cds_column in mapping_df['lift_from_property'].unique():
-            print(f"{cds_column} is in mapped columns")
-            loadsheets = moveIt(cds_column, loadsheets, mapping_df, cds_df)
+            loadsheets = moveIt2(cds_column, loadsheets, mapping_df, cds_df,True,None,movelog)
         else:
-            print(f"{cds_column} is an orphan")
             orphans.append(cds_column)
             
     #General clean-up
@@ -129,9 +124,9 @@ def main(args):
         temp_df = df.dropna(how='all')
         loadsheets[node] = temp_df
     # Drop any unpopulated dataframes
+    # TODO: Figure out how to drop if the relationships are the only thing populated
     dropkeys = []
     for node, df in loadsheets.items():
-        #print(f"Node: {node}\tDataframe lenght:{str(len(df))}")
         if len(df) == 0:
             dropkeys.append(node)
     for node in dropkeys:
@@ -140,14 +135,11 @@ def main(args):
     for node, df in loadsheets.items():
             temp_df = df.drop_duplicates()
             temp_df.insert(0, 'type', node)
-            #print(f"Node: {node}\tDataFrame:\n{df}")
             loadsheets[node] = temp_df
 
     
     #And that should do it, just write out the DH style load sheets
-    # Ignore any dataframes that are empty
     for node, df in loadsheets.items():
-        #print(node)
         filename = configs['output_directory']+"CDS_"+node+"_template.tsv"
         df.to_csv(filename, sep="\t", index=False)
     #Print out the orphan fields

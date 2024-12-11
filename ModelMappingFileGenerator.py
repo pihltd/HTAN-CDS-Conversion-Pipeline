@@ -116,7 +116,14 @@ def main(args):
                                                          "lift_to_version": new_model_version, "lift_to_node": node, "lift_to_property":rel, 
                                                          "lift_from_cde": "N/A", "lift_from_cdeversion": "N/A", "lift_to_cde": "N/A",
                                                          "lift_to_cdeversion": "N/A", "cde_relationship": "N/A"}
-            
+    
+    required = configs['required_columns']
+    for node, rellist in required.items():
+        for rel in rellist:
+            liftover_df.loc[len(liftover_df)] = {"lift_from_version": old_model_version, "lift_from_node": node, "lift_from_property": rel, 
+                                                         "lift_to_version": new_model_version, "lift_to_node": node, "lift_to_property":rel, 
+                                                         "lift_from_cde": "N/A", "lift_from_cdeversion": "N/A", "lift_to_cde": "N/A",
+                                                         "lift_to_cdeversion": "N/A", "cde_relationship": "N/A"}
     
     #Print out the liftover files
     liftover_df.to_csv(configs['mapping_file'], sep="\t", index=False)

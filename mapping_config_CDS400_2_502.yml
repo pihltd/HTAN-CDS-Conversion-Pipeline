@@ -1,10 +1,10 @@
 "old_version_files":
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model.yml"
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model-props.yml"
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/4.0.0/model-desc/cds-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/4.0.0/model-desc/cds-model-props.yml"
 "new_version_files":
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model.yml"
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model-props.yml"
-"mapping_file": '.\examples\CDS_500_2_502_liftover.csv'
+"mapping_file": '.\examples\CDS_400_2_502_liftover.csv'
 "relationship_columns":
   "diagnosis":
     - participant.study_participant_id

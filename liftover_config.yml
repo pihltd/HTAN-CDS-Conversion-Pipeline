@@ -13,27 +13,41 @@
   "treatment_outcome": "response"
   "file_format": "file_type"
   "imaging_modality": "image_modality"
-"transforms":
-  "study_diagnosis_id":
-    - "participant": "study_participant_id"
-    - "diagnosis_id"
-    - "study_diagnosis_id"
-  "study_link_id":
-    - "file_id"
-  "MultiplexMicroscopy_id":
-  - "study_link_id"
-  "study_participant_id":
-    - "study": "phs_accession"
-    - "participant": "participant_id"
-  "treatement_id":
-    - "participant": "participant_id"
-    - "therapy": "therapeutic_agent"
+"required_columns":
+  "participant": 
+    - "study_participant_id" #Done dbgap+participant_id
+  "study":
+    - "study_diagnosis_id"  #phs, particpant_id, site_of_resection_or_biopsy
+  "file":
+    - "file_id" #Done file name, size, mdd5sum
+  "image":
+    - "study_link_id" #Done file name, size, md5sum
+  "MultiplexMicroscopy":
+    - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
+  "NonDICOMpathologyImages":
+    - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
+
+#"transforms":
+#  "study_diagnosis_id":
+#    - "participant": "study_participant_id"
+#    - "diagnosis_id"
+#    - "study_diagnosis_id"
+#  "study_link_id":
+#    - "file_id"
+#  "MultiplexMicroscopy_id":
+#  - "study_link_id"
+#  "study_participant_id":
+#    - "study": "phs_accession"
+#    - "participant": "participant_id"
+#  "treatement_id":
+#    - "participant": "participant_id"
+#    - "therapy": "therapeutic_agent"
 "relationship_columns":
   "diagnosis":
     - participant.study_participant_id
   "file":
     - "study.phs_accession"
-    - "particpant.study_participant_id"
+    - "participant.study_participant_id"
     - "sample.sample_id"
   "genomic_info":
     - "file.file_id"
@@ -56,11 +70,11 @@
   "proteomic":
     - "file.file_id"
   "sample":
-    - "particpant.study_participant_id"
+    - "participant.study_participant_id"
   "study":
     - "program.program_acronym"
   "treatment":
-    - "particpant.study_participant_id"
+    - "participant.study_participant_id"
   
   
   
