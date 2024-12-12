@@ -4,7 +4,7 @@ from crdclib import crdclib
 import bento_mdf
 import uuid
 
-def moveIt2(old_column, loadsheets, mapping_df, cds_df, mapped=True, original = None, logfile = None):
+def moveIt(old_column, loadsheets, mapping_df, cds_df, mapped=True, original = None, logfile = None):
     if logfile is not None:
         f = open(logfile, "a")
     # Create a new df based on the value of old_column
@@ -32,7 +32,7 @@ def addColumns(cds_df, relations):
                 
     return cds_df
 
-def keyIt2(cds_df, relations):
+def keyIt(cds_df, relations):
     # Get the dbgap ID since it's a constant
     dbgap = cds_df.iloc[0]['phs_accession']
     for rellist in relations.values():
@@ -62,6 +62,42 @@ def keyIt2(cds_df, relations):
                     
     return cds_df
 
+def cleanIt(loadsheets, addedfields):
+    cleaningreport = r'C:\Users\pihltd\Documents\modeltest\liftover\cleaningReport.tsv'
+    f = open(cleaningreport, "a")
+    f.write(f"Added Fields:\n")
+    for field in addedfields:
+        f.write(field+"\t")
+    f.write("\n")
+    #print(addedfields)
+    # The purpose of this is to remove all dataframes that don't have any data
+    nullcols = []
+    datacols = []
+    for node, df in loadsheets.items():
+        for column in list(df.columns):
+            if len(df[column]) > 0:
+                f.write(f"Data:\t{column}\t{len(df[column])}\n")
+                datacols.append(column)
+            else:
+                f.write(f"Null:\t{column}\t{len(df[column])}\n")
+                nullcols.append(column)
+        if set(datacols) <= set(addedfields):
+            #print(f"Only data in addded columns: {datacols}\t Node:{node}")
+            #print(f"Only data in addded columns Node:{node}")
+            f.write(f"Only data in added columns for node: {node}\n")
+            for col in nullcols:
+                f.write(col+"\t")
+            f.write("\n")
+        else:
+            #print(f"Has submitted data: {datacols}\tNode: {node}")
+            #print(f"Has submitted data  Node: {node}")
+            f.write(f"Has submitted data for node: {node}\n")
+            for col in datacols:
+                f.write(col+"\t")
+            f.write("\n")
+    return loadsheets
+        
+
 
 def main(args):
     configs = crdclib.readYAML(args.configfile)
@@ -74,8 +110,8 @@ def main(args):
     # All key fields need to be filled before we break up the sheet
     cds_df = addColumns(cds_df, configs['relationship_columns'])
     cds_df = addColumns(cds_df, configs['required_columns'])
-    cds_df = keyIt2(cds_df, configs['relationship_columns'])
-    cds_df = keyIt2(cds_df, configs['required_columns'])
+    cds_df = keyIt(cds_df, configs['relationship_columns'])
+    cds_df = keyIt(cds_df, configs['required_columns'])
     keyreport = configs['output_directory']+"KeyAdditionReport.csv"
     cds_df.to_csv(keyreport, sep="\t", index=False)
     
@@ -112,9 +148,9 @@ def main(args):
         # Currently, manual takes precedence over automated
         if cds_column in configs['manual'].keys():
             manual_field = configs['manual'][cds_column]
-            loadsheets = moveIt2(manual_field, loadsheets, mapping_df, cds_df, False, cds_column,movelog)
+            loadsheets = moveIt(manual_field, loadsheets, mapping_df, cds_df, False, cds_column,movelog)
         elif cds_column in mapping_df['lift_from_property'].unique():
-            loadsheets = moveIt2(cds_column, loadsheets, mapping_df, cds_df,True,None,movelog)
+            loadsheets = moveIt(cds_column, loadsheets, mapping_df, cds_df,True,None,movelog)
         else:
             orphans.append(cds_column)
             
@@ -136,6 +172,16 @@ def main(args):
             temp_df = df.drop_duplicates()
             temp_df.insert(0, 'type', node)
             loadsheets[node] = temp_df
+            
+    # Drop out any empty dataframes
+    addedfields = ["type"]
+    for fields in configs["required_columns"].values():
+        for field in fields:
+            addedfields.append(field)
+    for fields in configs["relationship_columns"].values():
+        for field in fields:
+            addedfields.append(field)
+    loadsheets = cleanIt(loadsheets, addedfields)
 
     
     #And that should do it, just write out the DH style load sheets
