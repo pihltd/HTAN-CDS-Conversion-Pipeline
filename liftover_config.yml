@@ -26,6 +26,30 @@
     - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
   "NonDICOMpathologyImages":
     - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
+"keyrules":
+  "study_participant_id":
+    - "phs_accession"
+    - "participant_id"
+  "study_diagnosis_id":
+    - "phs_accession"
+    - "participant_id"
+    - "site_of_resection_or_biopsy"
+  "file_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+  "study_link_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+  "MultiplexMicroscopy_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+  "NonDICOMpathologyImages_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
 
 #"transforms":
 #  "study_diagnosis_id":
