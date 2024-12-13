@@ -62,6 +62,10 @@ def keyIt(cds_df, relations):
                     
     return cds_df
 
+# TODO:  Rethink cleanIt.  Possible solution:  1) Don't add required columns to cds_df.  2) Remove empty load sheets 3) Add required columns to remaining load sheets 4) Make a string builder that can pull 
+# info from any of the load sheets to create keys and put them in required columns
+# TODO:  Figure out how to identify key properties from the model.
+
 def cleanIt(loadsheets, addedfields):
     cleaningreport = r'C:\Users\pihltd\Documents\modeltest\liftover\cleaningReport.tsv'
     f = open(cleaningreport, "a")
