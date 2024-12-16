@@ -4,6 +4,7 @@ import argparse
 from crdclib import crdclib
 import pandas as pd
 
+#TODO:  1) for CDEs with PVs, pull PVs from caDSR  2) Use NCIt codes to map PVs
 
 def getCDEInfo(term_object):
     # Get the ID and version of caDSR CDEs.  WE officially don't care about other CDEs

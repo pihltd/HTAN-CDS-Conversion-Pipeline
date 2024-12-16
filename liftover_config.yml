@@ -26,22 +26,48 @@
     - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
   "NonDICOMpathologyImages":
     - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
-
-#"transforms":
-#  "study_diagnosis_id":
-#    - "participant": "study_participant_id"
-#    - "diagnosis_id"
-#    - "study_diagnosis_id"
-#  "study_link_id":
-#    - "file_id"
-#  "MultiplexMicroscopy_id":
-#  - "study_link_id"
-#  "study_participant_id":
-#    - "study": "phs_accession"
-#    - "participant": "participant_id"
-#  "treatement_id":
-#    - "participant": "participant_id"
-#    - "therapy": "therapeutic_agent"
+  "diagnosis":
+    - "diagnosis_id"
+    - "study_diagnosis_id"
+"keyrules":
+  "diagnosis_id":
+    - "primary_diagnosis"
+    - "site_of_resection_or_biopsy"
+    - "study_acronym"
+    - "participant_id"
+  "study_participant_id":
+    - "phs_accession"
+    - "participant_id"
+  "study_diagnosis_id":
+    - "phs_accession"
+    - "participant_id"
+    - "site_of_resection_or_biopsy"
+  "file_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+    - "tumor_tissue_type"
+  "study_link_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+    - "tumor_tissue_type"
+  "MultiplexMicroscopy_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+    - "tumor_tissue_type"
+  "NonDICOMpathologyImages_id":
+    - "file_name"
+    - "file_size"
+    - "md5sum"
+    - "tumor_tissue_type"
+  "phs_accession":
+    - "phs_accession"
+  "sample_id":
+    - "sample_id"
+  "program_acronym":
+    - "study_acronym"
 "relationship_columns":
   "diagnosis":
     - participant.study_participant_id

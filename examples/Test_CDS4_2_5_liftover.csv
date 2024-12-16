@@ -260,9 +260,8 @@ v5.0.0	sample	participant.study_participant_id	v5.0.2	sample	participant.study_p
 v5.0.0	study	program.program_acronym	v5.0.2	study	program.program_acronym	N/A	N/A	N/A	N/A	N/A
 v5.0.0	treatment	participant.study_participant_id	v5.0.2	treatment	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	participant	study_participant_id	v5.0.2	participant	study_participant_id	N/A	N/A	N/A	N/A	N/A
+v5.0.0	study	study_diagnosis_id	v5.0.2	study	study_diagnosis_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	file	file_id	v5.0.2	file	file_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	image	study_link_id	v5.0.2	image	study_link_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	MultiplexMicroscopy	MultiplexMicroscopy_id	v5.0.2	MultiplexMicroscopy	MultiplexMicroscopy_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	NonDICOMpathologyImages	NonDICOMpathologyImages_id	v5.0.2	NonDICOMpathologyImages	NonDICOMpathologyImages_id	N/A	N/A	N/A	N/A	N/A
-v5.0.0	diagnosis	diagnosis_id	v5.0.2	diagnosis	diagnosis_id	N/A	N/A	N/A	N/A	N/A
-v5.0.0	diagnosis	study_diagnosis_id	v5.0.2	diagnosis	study_diagnosis_id	N/A	N/A	N/A	N/A	N/A
