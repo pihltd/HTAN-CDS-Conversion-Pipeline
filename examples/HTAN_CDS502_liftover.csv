@@ -1,0 +1,25 @@
+lift_from_version	lift_from_node	lift_from_property	lift_to_version	lift_to_node	lift_to_property	lift_from_cde	lift_from_cdeversion	lift_to_cde	lift_to_cdeversion	cde_relationship
+v24.3.1	Biospecimen	AcquisitionMethodType	v5.0.2	N/A	N/A			N/A	N/a	Unmapped
+v24.3.1	diagnosis	participant.study_participant_id	v5.0.2	diagnosis	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	file	study.phs_accession	v5.0.2	file	study.phs_accession	N/A	N/A	N/A	N/A	N/A
+v24.3.1	file	participant.study_participant_id	v5.0.2	file	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	file	sample.sample_id	v5.0.2	file	sample.sample_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	genomic_info	file.file_id	v5.0.2	genomic_info	file.file_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	image	file.file_id	v5.0.2	image	file.file_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	MultiplexMicroscopy	image.study_link_id	v5.0.2	MultiplexMicroscopy	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	NonDICOMCTimages	image.study_link_id	v5.0.2	NonDICOMCTimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	NonDICOMMRimages	image.study_link_id	v5.0.2	NonDICOMMRimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	NonDICOMpathologyImages	image.study_link_id	v5.0.2	NonDICOMpathologyImages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	NonDICOMPETimages	image.study_link_id	v5.0.2	NonDICOMPETimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	NonDICOMradiologyAllModalities	image.study_link_id	v5.0.2	NonDICOMradiologyAllModalities	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	participant	study.phs_accession	v5.0.2	participant	study.phs_accession	N/A	N/A	N/A	N/A	N/A
+v24.3.1	proteomic	file.file_id	v5.0.2	proteomic	file.file_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	sample	participant.study_participant_id	v5.0.2	sample	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	study	program.program_acronym	v5.0.2	study	program.program_acronym	N/A	N/A	N/A	N/A	N/A
+v24.3.1	treatment	participant.study_participant_id	v5.0.2	treatment	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	participant	study_participant_id	v5.0.2	participant	study_participant_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	study	study_diagnosis_id	v5.0.2	study	study_diagnosis_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	file	file_id	v5.0.2	file	file_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	image	study_link_id	v5.0.2	image	study_link_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	MultiplexMicroscopy	MultiplexMicroscopy_id	v5.0.2	MultiplexMicroscopy	MultiplexMicroscopy_id	N/A	N/A	N/A	N/A	N/A
+v24.3.1	NonDICOMpathologyImages	NonDICOMpathologyImages_id	v5.0.2	NonDICOMpathologyImages	NonDICOMpathologyImages_id	N/A	N/A	N/A	N/A	N/A

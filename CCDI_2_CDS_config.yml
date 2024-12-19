@@ -1,12 +1,14 @@
 "old_version_files":
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model.yml"
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model-props.yml"
+  - "https://raw.githubusercontent.com/CBIIT/ccdi-model/refs/heads/main/model-desc/ccdi-model-props.yml"
+  - "https://raw.githubusercontent.com/CBIIT/ccdi-model/refs/heads/main/model-desc/ccdi-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/ccdi-model/refs/heads/main/model-desc/props-ccdi-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/ccdi-model/refs/heads/main/model-desc/terms.yml"
 "new_version_files":
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.2/model-desc/cds-model.yml"
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.2/model-desc/cds-model-props.yml"
 "do_value_mapping": True
-"mapping_file": '.\examples\CDS_500_2_502_liftover.csv'
-"value_mapping_file": '.\examples\CDS_500_2_502_value_liftover.csv'
+"mapping_file": '.\examples\CCDI_CDS_liftover.csv'
+"value_mapping_file": '.\examples\CCDI_CDS_value_liftover.csv'
 "logdirectory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
 "relationship_columns":
   "diagnosis":

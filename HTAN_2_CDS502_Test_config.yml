@@ -1,12 +1,11 @@
 "old_version_files":
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model.yml"
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model-props.yml"
+  - "https://raw.githubusercontent.com/CBIIT/htan-model/refs/heads/main/model-desc/htan-model-props.yaml"
+  - "https://raw.githubusercontent.com/CBIIT/htan-model/refs/heads/main/model-desc/htan-model-terms.yaml"
+  - "https://raw.githubusercontent.com/CBIIT/htan-model/refs/heads/main/model-desc/htan-model.yaml"
 "new_version_files":
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.2/model-desc/cds-model.yml"
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.2/model-desc/cds-model-props.yml"
-"do_value_mapping": True
-"mapping_file": '.\examples\CDS_500_2_502_liftover.csv'
-"value_mapping_file": '.\examples\CDS_500_2_502_value_liftover.csv'
+"mapping_file": '.\examples\HTAN_CDS502_liftover.csv'
 "logdirectory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
 "relationship_columns":
   "diagnosis":
@@ -44,6 +43,8 @@
 "required_columns":
   "participant": 
     - "study_participant_id" #Done dbgap+participant_id
+  "study":
+    - "study_diagnosis_id"  #phs, particpant_id, site_of_resection_or_biopsy
   "file":
     - "file_id" #Done file name, size, mdd5sum
   "image":
@@ -52,6 +53,3 @@
     - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
   "NonDICOMpathologyImages":
     - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
-  "diagnosis":
-    - "diagnosis_id"
-    - "study_diagnosis_id"
