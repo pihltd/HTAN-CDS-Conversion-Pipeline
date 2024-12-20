@@ -1,193 +1,193 @@
-lift_from_version	lift_from_node	lift_from_property	lift_to_version	lift_to_node	lift_to_property	lift_from_cde	lift_from_cdeversion	lift_to_cde	lift_to_cdeversion	cde_relationship
-v2.0.0	clinical_measure_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	cytogenomic_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	methylation_array_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	participant	crdc_id	v5.0.2	participant	crdc_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	pathology_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	radiology_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	generic_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	sample	crdc_id	v5.0.2	sample	crdc_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	sequencing_file	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	study	crdc_id	v5.0.2	study	crdc_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	study_personnel	crdc_id	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
-v2.0.0	clinical_measure_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	clinical_measure_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	clinical_measure_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	cytogenomic_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	cytogenomic_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	diagnosis	diagnosis	v5.0.2	diagnosis	morphology	14714127	1.00	14714127	1.00	CDE ID and Version match
-v2.0.0	diagnosis	tumor_stage_clinical_t	v5.0.2	diagnosis	tumor_stage_clinical_t	3440328	1.00	3440328	1.00	CDE ID and Version match
-v2.0.0	diagnosis	tumor_stage_clinical_n	v5.0.2	diagnosis	tumor_stage_clinical_n	3440330	1.00	3440330	1.00	CDE ID and Version match
-v2.0.0	diagnosis	tumor_stage_clinical_m	v5.0.2	diagnosis	tumor_stage_clinical_m	3440331	1.00	3440331	1.00	CDE ID and Version match
-v2.0.0	diagnosis	tumor_grade	v5.0.2	diagnosis	tumor_grade	11325685	1.00	11325685	1.00	CDE ID and Version match
-v2.0.0	diagnosis	tumor_grade_source	v5.0.2	diagnosis	tumor_grade	11325685	1.00	11325685	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	methylation_array_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	methylation_array_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	participant	participant_id	v5.0.2	participant	participant_id	12220014	1	12220014	1.00	CDE Version mismatch
-v2.0.0	participant	race	v5.0.2	participant	race	2192199	1.00	2192199	1.00	CDE ID and Version match
-v2.0.0	participant	sex_at_birth	v5.0.2	participant	sex	7572817	2.0	7572817	1.00	CDE Version mismatch
-v2.0.0	pathology_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	pathology_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	pathology_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	pathology_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	pathology_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	pathology_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	pathology_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	pathology_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	pathology_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	pathology_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	pathology_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	pathology_file	image_modality	v5.0.2	image	image_modality	12137353	1.00	12137353	1.00	CDE ID and Version match
-v2.0.0	pathology_file	image_modality	v5.0.2	NonDICOMradiologyAllModalities	performed_imaging_study_nonAcquisitionModalitiesInStudyCode	12137353	1.00	12137353	1.00	CDE ID and Version match
-v2.0.0	pathology_file	magnification	v5.0.2	MultiplexMicroscopy	nominal_magnification	7788940	1.00	7788940	1.00	CDE ID and Version match
-v2.0.0	pathology_file	magnification	v5.0.2	NonDICOMpathologyImages	nominal_magnification	7788940	1.00	7788940	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	radiology_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	radiology_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	radiology_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	radiology_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	radiology_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	radiology_file	image_modality	v5.0.2	image	image_modality	12137353	1.00	12137353	1.00	CDE ID and Version match
-v2.0.0	radiology_file	image_modality	v5.0.2	NonDICOMradiologyAllModalities	performed_imaging_study_nonAcquisitionModalitiesInStudyCode	12137353	1.00	12137353	1.00	CDE ID and Version match
-v2.0.0	radiology_file	magnetic_field_strength	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_magneticFieldStrength	14607707	1.00	14607707	1.00	CDE ID and Version match
-v2.0.0	radiology_file	scanner_manufacturer	v5.0.2	image	imaging_equipment_manufacturer	2866141	1.00	2866141	1.00	CDE ID and Version match
-v2.0.0	radiology_file	scanner_manufacturer	v5.0.2	proteomic	instrument_make	2866141	1.00	2866141	1.00	CDE ID and Version match
-v2.0.0	radiology_file	scanner_model	v5.0.2	image	imaging_equipment_manufacturer	2866141	1.00	2866141	1.00	CDE ID and Version match
-v2.0.0	radiology_file	scanner_model	v5.0.2	proteomic	instrument_make	2866141	1.00	2866141	1.00	CDE ID and Version match
-v2.0.0	radiology_file	slice_thickness	v5.0.2	NonDICOMradiologyAllModalities	performed_imaging_study_sliceThickness	3113185	1.00	3113185	2.00	CDE Version mismatch
-v2.0.0	radiology_file	echoPulseSequenceCategoryCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode	14645641	1.00	14645641	1.00	CDE ID and Version match
-v2.0.0	radiology_file	diffusionBValue	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode	14645641	1.00	14645641	1.00	CDE ID and Version match
-v2.0.0	radiology_file	diffusionDirectionalityCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_diffusionDirectionalityCode	14616426	1.00	14616426	1.00	CDE ID and Version match
-v2.0.0	radiology_file	resonantNucleusCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_resonantNucleusCode	14616427	1.00	14616427	1.00	CDE ID and Version match
-v2.0.0	radiology_file	acquisitionContrastCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_acquisitionContrastCode	14616428	1.00	14616428	1.00	CDE ID and Version match
-v2.0.0	radiology_file	inversionRecoveryIndicator	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_inversionRecoveryIndicator	14607722	1.00	14607722	1.00	CDE ID and Version match
-v2.0.0	radiology_file	pulseSequenceName	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_pulseSequenceName	14608594	1.00	14608594	1.00	CDE ID and Version match
-v2.0.0	radiology_file	multipleSpinEchoIndicator	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator	14608595	1.00	14608595	1.00	CDE ID and Version match
-v2.0.0	radiology_file	phaseContrastIndicator	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_phaseContrastIndicator	14608601	1.00	14608601	1.00	CDE ID and Version match
-v2.0.0	radiology_file	timeOfFlightContrastIndicator	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator	14608649	1.00	14608649	1.00	CDE ID and Version match
-v2.0.0	radiology_file	arterialSpinLabelingContrastCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_acquisitionContrastCode	14616428	1.00	14616428	1.00	CDE ID and Version match
-v2.0.0	radiology_file	steadyStatePulseSequenceCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode	14616430	1.00	14616430	1.00	CDE ID and Version match
-v2.0.0	radiology_file	echoPlanarPulseSequenceIndicator	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator	14612651	1.00	14612651	1.00	CDE ID and Version match
-v2.0.0	radiology_file	saturationRecoveryIndicator	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_saturationRecoveryIndicator	14612652	1.00	14612652	1.00	CDE ID and Version match
-v2.0.0	radiology_file	spectrallySelectedSuppressionCode	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode	14616431	1.00	14616431	1.00	CDE ID and Version match
-v2.0.0	radiology_file	complexImageComponentCode	v5.0.2	NonDICOMMRimages	MRImageReconstructionProtocolElement_complexImageComponentCode	14616432	1.00	14616432	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	generic_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	generic_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	generic_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	generic_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	generic_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	sample	sample_id	v5.0.2	sample	sample_id	6921892	1.00	6921892	1.00	CDE ID and Version match
-v2.0.0	sample	participant_age_at_collection	v5.0.2	sample	sample_age_at_collection	14473376	1.00	14473376	1.00	CDE ID and Version match
-v2.0.0	sample	sample_tumor_status	v5.0.2	sample	sample_tumor_status	14688604	1.00	14688604	1.00	CDE ID and Version match
-v2.0.0	sample	sample_description	v5.0.2	sample	sample_description	2003907	1.00	2003907	3.00	CDE Version mismatch
-v2.0.0	sequencing_file	file_name	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
-v2.0.0	sequencing_file	file_type	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	file_description	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	file_size	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	md5sum	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	file_mapping_level	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	file_access	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	acl	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	authz	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	file_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	file_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	library_id	v5.0.2	genomic_info	library_id	11555660	1.00	11555660	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	library_selection	v5.0.2	genomic_info	library_selection	6347743	1.00	6347743	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	library_strategy	v5.0.2	genomic_info	library_strategy	6273393	1.00	6273393	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	library_layout	v5.0.2	genomic_info	library_layout	11527735	1.00	11527735	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	number_of_reads	v5.0.2	genomic_info	number_of_reads	11529035	1.00	11529035	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	design_description	v5.0.2	genomic_info	design_description	11529028	1.00	11529028	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	design_description	v5.0.2	genomic_info	instrument_model	11529028	1.00	11529028	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	platform	v5.0.2	genomic_info	platform	6347771	1.00	6347771	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	avg_read_length	v5.0.2	genomic_info	avg_read_length	12426615	1.00	12426615	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	coverage	v5.0.2	genomic_info	coverage	11556322	1.00	11556322	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	reference_genome_assembly	v5.0.2	genomic_info	reference_genome_assembly	11529031	1.00	11529031	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	custom_assembly_fasta_file_for_alignment	v5.0.2	genomic_info	custom_assembly_fasta_file_for_alignment	11636299	1.00	11636299	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	sequence_alignment_software	v5.0.2	genomic_info	sequence_alignment_software	11529072	1.00	11529072	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	protocols_link	v5.0.2	image	citation_or_DOI	7787673	1.00	7787673	1.00	CDE ID and Version match
-v2.0.0	sequencing_file	protocols_link	v5.0.2	image	imaging_protocol	7787673	1.00	7787673	1.00	CDE ID and Version match
-v2.0.0	study	dbgap_accession	v5.0.2	study	phs_accession	11524544	1.00	11524544	1.00	CDE ID and Version match
-v2.0.0	study	study_name	v5.0.2	study	study_name	11459810	1.00	11459810	1.00	CDE ID and Version match
-v2.0.0	study	study_acronym	v5.0.2	study	study_acronym	11459812	1.00	11459812	1.00	CDE ID and Version match
-v2.0.0	study	external_url	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	study	external_url	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
-v2.0.0	study	experimental_strategy_and_data_subtype	v5.0.2	file	experimental_strategy_and_data_subtypes	12373576	1.00	12373576	1.00	CDE ID and Version match
-v2.0.0	study	study_data_types	v5.0.2	study	study_data_types	12571096	1.00	12571096	1.00	CDE ID and Version match
-v2.0.0	study	size_of_data_being_uploaded	v5.0.2	file	experimental_strategy_and_data_subtypes	12373576	1.00	12373576	1.00	CDE ID and Version match
-v2.0.0	study_admin	organism_species	v5.0.2	study	organism_species	6118266	1.00	6118266	1.00	CDE ID and Version match
-v2.0.0	study_admin	adult_or_childhood_study	v5.0.2	study	adult_or_childhood_study	11524549	1.00	11524549	1.00	CDE ID and Version match
-v2.0.0	study_admin	file_types_and_format	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
-v2.0.0	study_admin	number_of_participants	v5.0.2	study	number_of_participants	11555662	1.00	11555662	1.00	CDE ID and Version match
-v2.0.0	study_admin	number_of_samples	v5.0.2	study	number_of_samples	11555663	1.00	11555663	1.00	CDE ID and Version match
-v2.0.0	study_arm	study_arm_description	v5.0.2	study	clinical_trial_arm	11524548	1.00	11524548	1.00	CDE ID and Version match
-v2.0.0	study_arm	clinical_trial_identifier	v5.0.2	study	clinical_trial_arm	11524548	1.00	11524548	1.00	CDE ID and Version match
-v2.0.0	study_funding	funding_agency	v5.0.2	study	funding_agency	11524545	1.00	11524545	1.00	CDE ID and Version match
-v2.0.0	study_funding	grant_id	v5.0.2	study	grant_id	3434057	1.00	3434057	2.00	CDE Version mismatch
-v2.0.0	study_funding	funding_source_program_name	v5.0.2	study	funding_source_program_name	11524546	1.00	11524546	1.00	CDE ID and Version match
-v2.0.0	study_personnel	personnel_type	v5.0.2	study	role_or_affiliation	2201713	1.00	2201713	2.00	CDE Version mismatch
-v2.0.0	study_personnel	email_address	v5.0.2	study	email	2517550	1.00	2517550	1.00	CDE ID and Version match
-v2.0.0	survival	last_known_survival_status	v5.0.2	diagnosis	vital_status	2847330	1.00	2847330	1.00	CDE ID and Version match
-v2.0.0	treatment	treatment_type	v5.0.2	treatment	treatment_type	14737565	1.00	14737565	1.00	CDE ID and Version match
-v2.0.0	treatment_response	response	v5.0.2	treatment	response	13383448	1.00	13383448	1.00	CDE ID and Version match
-v2.0.0	cell_line	cell_line_id	v5.0.2	N/A	N/A	14596104	1.00	N/A	N/a	Unmapped
-v2.0.0	diagnosis	participant.study_participant_id	v5.0.2	diagnosis	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	file	study.phs_accession	v5.0.2	file	study.phs_accession	N/A	N/A	N/A	N/A	N/A
-v2.0.0	file	participant.study_participant_id	v5.0.2	file	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	file	sample.sample_id	v5.0.2	file	sample.sample_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	genomic_info	file.file_id	v5.0.2	genomic_info	file.file_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	image	file.file_id	v5.0.2	image	file.file_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	MultiplexMicroscopy	image.study_link_id	v5.0.2	MultiplexMicroscopy	image.study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	NonDICOMCTimages	image.study_link_id	v5.0.2	NonDICOMCTimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	NonDICOMMRimages	image.study_link_id	v5.0.2	NonDICOMMRimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	NonDICOMpathologyImages	image.study_link_id	v5.0.2	NonDICOMpathologyImages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	NonDICOMPETimages	image.study_link_id	v5.0.2	NonDICOMPETimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	NonDICOMradiologyAllModalities	image.study_link_id	v5.0.2	NonDICOMradiologyAllModalities	image.study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	participant	study.phs_accession	v5.0.2	participant	study.phs_accession	N/A	N/A	N/A	N/A	N/A
-v2.0.0	proteomic	file.file_id	v5.0.2	proteomic	file.file_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	sample	participant.study_participant_id	v5.0.2	sample	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	study	program.program_acronym	v5.0.2	study	program.program_acronym	N/A	N/A	N/A	N/A	N/A
-v2.0.0	treatment	participant.study_participant_id	v5.0.2	treatment	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	participant	study_participant_id	v5.0.2	participant	study_participant_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	file	file_id	v5.0.2	file	file_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	image	study_link_id	v5.0.2	image	study_link_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	MultiplexMicroscopy	MultiplexMicroscopy_id	v5.0.2	MultiplexMicroscopy	MultiplexMicroscopy_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	NonDICOMpathologyImages	NonDICOMpathologyImages_id	v5.0.2	NonDICOMpathologyImages	NonDICOMpathologyImages_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	diagnosis	diagnosis_id	v5.0.2	diagnosis	diagnosis_id	N/A	N/A	N/A	N/A	N/A
-v2.0.0	diagnosis	study_diagnosis_id	v5.0.2	diagnosis	study_diagnosis_id	N/A	N/A	N/A	N/A	N/A
+lift_from_model	lift_from_version	lift_from_node	lift_from_property	lift_to_model	lift_to_version	lift_to_node	lift_to_property	lift_from_cde	lift_from_cdeversion	lift_to_cde	lift_to_cdeversion	cde_relationship
+CCDI	v2.0.0	clinical_measure_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	cytogenomic_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	methylation_array_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	participant	crdc_id	CDS	v5.0.2	participant	crdc_id	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	pathology_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	radiology_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	generic_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	sample	crdc_id	CDS	v5.0.2	sample	crdc_id	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	sequencing_file	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	study	crdc_id	CDS	v5.0.2	study	crdc_id	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	study_personnel	crdc_id	CDS	v5.0.2	N/A	N/A	N/A	N/A	N/A	N/A	N/A
+CCDI	v2.0.0	clinical_measure_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	clinical_measure_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	clinical_measure_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	cytogenomic_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	cytogenomic_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	diagnosis	diagnosis	CDS	v5.0.2	diagnosis	morphology	14714127	1.00	14714127	1.00	CDE ID and Version match
+CCDI	v2.0.0	diagnosis	tumor_stage_clinical_t	CDS	v5.0.2	diagnosis	tumor_stage_clinical_t	3440328	1.00	3440328	1.00	CDE ID and Version match
+CCDI	v2.0.0	diagnosis	tumor_stage_clinical_n	CDS	v5.0.2	diagnosis	tumor_stage_clinical_n	3440330	1.00	3440330	1.00	CDE ID and Version match
+CCDI	v2.0.0	diagnosis	tumor_stage_clinical_m	CDS	v5.0.2	diagnosis	tumor_stage_clinical_m	3440331	1.00	3440331	1.00	CDE ID and Version match
+CCDI	v2.0.0	diagnosis	tumor_grade	CDS	v5.0.2	diagnosis	tumor_grade	11325685	1.00	11325685	1.00	CDE ID and Version match
+CCDI	v2.0.0	diagnosis	tumor_grade_source	CDS	v5.0.2	diagnosis	tumor_grade	11325685	1.00	11325685	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	methylation_array_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	methylation_array_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	participant	participant_id	CDS	v5.0.2	participant	participant_id	12220014	1	12220014	1.00	CDE Version mismatch
+CCDI	v2.0.0	participant	race	CDS	v5.0.2	participant	race	2192199	1.00	2192199	1.00	CDE ID and Version match
+CCDI	v2.0.0	participant	sex_at_birth	CDS	v5.0.2	participant	sex	7572817	2.0	7572817	1.00	CDE Version mismatch
+CCDI	v2.0.0	pathology_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	pathology_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	image_modality	CDS	v5.0.2	image	image_modality	12137353	1.00	12137353	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	image_modality	CDS	v5.0.2	NonDICOMradiologyAllModalities	performed_imaging_study_nonAcquisitionModalitiesInStudyCode	12137353	1.00	12137353	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	magnification	CDS	v5.0.2	MultiplexMicroscopy	nominal_magnification	7788940	1.00	7788940	1.00	CDE ID and Version match
+CCDI	v2.0.0	pathology_file	magnification	CDS	v5.0.2	NonDICOMpathologyImages	nominal_magnification	7788940	1.00	7788940	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	radiology_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	image_modality	CDS	v5.0.2	image	image_modality	12137353	1.00	12137353	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	image_modality	CDS	v5.0.2	NonDICOMradiologyAllModalities	performed_imaging_study_nonAcquisitionModalitiesInStudyCode	12137353	1.00	12137353	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	magnetic_field_strength	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_magneticFieldStrength	14607707	1.00	14607707	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	scanner_manufacturer	CDS	v5.0.2	image	imaging_equipment_manufacturer	2866141	1.00	2866141	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	scanner_manufacturer	CDS	v5.0.2	proteomic	instrument_make	2866141	1.00	2866141	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	scanner_model	CDS	v5.0.2	image	imaging_equipment_manufacturer	2866141	1.00	2866141	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	scanner_model	CDS	v5.0.2	proteomic	instrument_make	2866141	1.00	2866141	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	slice_thickness	CDS	v5.0.2	NonDICOMradiologyAllModalities	performed_imaging_study_sliceThickness	3113185	1.00	3113185	2.00	CDE Version mismatch
+CCDI	v2.0.0	radiology_file	echoPulseSequenceCategoryCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode	14645641	1.00	14645641	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	diffusionBValue	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode	14645641	1.00	14645641	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	diffusionDirectionalityCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_diffusionDirectionalityCode	14616426	1.00	14616426	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	resonantNucleusCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_resonantNucleusCode	14616427	1.00	14616427	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	acquisitionContrastCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_acquisitionContrastCode	14616428	1.00	14616428	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	inversionRecoveryIndicator	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_inversionRecoveryIndicator	14607722	1.00	14607722	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	pulseSequenceName	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_pulseSequenceName	14608594	1.00	14608594	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	multipleSpinEchoIndicator	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator	14608595	1.00	14608595	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	phaseContrastIndicator	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_phaseContrastIndicator	14608601	1.00	14608601	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	timeOfFlightContrastIndicator	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator	14608649	1.00	14608649	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	arterialSpinLabelingContrastCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_acquisitionContrastCode	14616428	1.00	14616428	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	steadyStatePulseSequenceCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode	14616430	1.00	14616430	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	echoPlanarPulseSequenceIndicator	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator	14612651	1.00	14612651	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	saturationRecoveryIndicator	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_saturationRecoveryIndicator	14612652	1.00	14612652	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	spectrallySelectedSuppressionCode	CDS	v5.0.2	NonDICOMMRimages	MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode	14616431	1.00	14616431	1.00	CDE ID and Version match
+CCDI	v2.0.0	radiology_file	complexImageComponentCode	CDS	v5.0.2	NonDICOMMRimages	MRImageReconstructionProtocolElement_complexImageComponentCode	14616432	1.00	14616432	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	generic_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	generic_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	sample	sample_id	CDS	v5.0.2	sample	sample_id	6921892	1.00	6921892	1.00	CDE ID and Version match
+CCDI	v2.0.0	sample	participant_age_at_collection	CDS	v5.0.2	sample	sample_age_at_collection	14473376	1.00	14473376	1.00	CDE ID and Version match
+CCDI	v2.0.0	sample	sample_tumor_status	CDS	v5.0.2	sample	sample_tumor_status	14688604	1.00	14688604	1.00	CDE ID and Version match
+CCDI	v2.0.0	sample	sample_description	CDS	v5.0.2	sample	sample_description	2003907	1.00	2003907	3.00	CDE Version mismatch
+CCDI	v2.0.0	sequencing_file	file_name	CDS	v5.0.2	file	file_name	11284037	2.0	11284037	1.00	CDE Version mismatch
+CCDI	v2.0.0	sequencing_file	file_type	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	file_description	CDS	v5.0.2	file	file_description	11280338	1.00	11280338	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	file_size	CDS	v5.0.2	file	file_size	11479876	1.00	11479876	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	md5sum	CDS	v5.0.2	file	md5sum	11556150	1.00	11556150	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	file_mapping_level	CDS	v5.0.2	file	file_mapping_level	11595478	1.00	11595478	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	file_access	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	acl	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	authz	CDS	v5.0.2	study	acl	11555664	1.00	11555664	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	file_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	file_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	library_id	CDS	v5.0.2	genomic_info	library_id	11555660	1.00	11555660	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	library_selection	CDS	v5.0.2	genomic_info	library_selection	6347743	1.00	6347743	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	library_strategy	CDS	v5.0.2	genomic_info	library_strategy	6273393	1.00	6273393	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	library_layout	CDS	v5.0.2	genomic_info	library_layout	11527735	1.00	11527735	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	number_of_reads	CDS	v5.0.2	genomic_info	number_of_reads	11529035	1.00	11529035	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	design_description	CDS	v5.0.2	genomic_info	design_description	11529028	1.00	11529028	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	design_description	CDS	v5.0.2	genomic_info	instrument_model	11529028	1.00	11529028	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	platform	CDS	v5.0.2	genomic_info	platform	6347771	1.00	6347771	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	avg_read_length	CDS	v5.0.2	genomic_info	avg_read_length	12426615	1.00	12426615	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	coverage	CDS	v5.0.2	genomic_info	coverage	11556322	1.00	11556322	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	reference_genome_assembly	CDS	v5.0.2	genomic_info	reference_genome_assembly	11529031	1.00	11529031	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	custom_assembly_fasta_file_for_alignment	CDS	v5.0.2	genomic_info	custom_assembly_fasta_file_for_alignment	11636299	1.00	11636299	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	sequence_alignment_software	CDS	v5.0.2	genomic_info	sequence_alignment_software	11529072	1.00	11529072	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	protocols_link	CDS	v5.0.2	image	citation_or_DOI	7787673	1.00	7787673	1.00	CDE ID and Version match
+CCDI	v2.0.0	sequencing_file	protocols_link	CDS	v5.0.2	image	imaging_protocol	7787673	1.00	7787673	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	dbgap_accession	CDS	v5.0.2	study	phs_accession	11524544	1.00	11524544	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	study_name	CDS	v5.0.2	study	study_name	11459810	1.00	11459810	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	study_acronym	CDS	v5.0.2	study	study_acronym	11459812	1.00	11459812	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	external_url	CDS	v5.0.2	file	file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	external_url	CDS	v5.0.2	MultiplexMicroscopy	channel_metadata_file_url_in_cds	11556141	1.00	11556141	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	experimental_strategy_and_data_subtype	CDS	v5.0.2	file	experimental_strategy_and_data_subtypes	12373576	1.00	12373576	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	study_data_types	CDS	v5.0.2	study	study_data_types	12571096	1.00	12571096	1.00	CDE ID and Version match
+CCDI	v2.0.0	study	size_of_data_being_uploaded	CDS	v5.0.2	file	experimental_strategy_and_data_subtypes	12373576	1.00	12373576	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_admin	organism_species	CDS	v5.0.2	study	organism_species	6118266	1.00	6118266	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_admin	adult_or_childhood_study	CDS	v5.0.2	study	adult_or_childhood_study	11524549	1.00	11524549	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_admin	file_types_and_format	CDS	v5.0.2	file	file_type	11416926	1.00	11416926	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_admin	number_of_participants	CDS	v5.0.2	study	number_of_participants	11555662	1.00	11555662	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_admin	number_of_samples	CDS	v5.0.2	study	number_of_samples	11555663	1.00	11555663	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_arm	study_arm_description	CDS	v5.0.2	study	clinical_trial_arm	11524548	1.00	11524548	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_arm	clinical_trial_identifier	CDS	v5.0.2	study	clinical_trial_arm	11524548	1.00	11524548	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_funding	funding_agency	CDS	v5.0.2	study	funding_agency	11524545	1.00	11524545	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_funding	grant_id	CDS	v5.0.2	study	grant_id	3434057	1.00	3434057	2.00	CDE Version mismatch
+CCDI	v2.0.0	study_funding	funding_source_program_name	CDS	v5.0.2	study	funding_source_program_name	11524546	1.00	11524546	1.00	CDE ID and Version match
+CCDI	v2.0.0	study_personnel	personnel_type	CDS	v5.0.2	study	role_or_affiliation	2201713	1.00	2201713	2.00	CDE Version mismatch
+CCDI	v2.0.0	study_personnel	email_address	CDS	v5.0.2	study	email	2517550	1.00	2517550	1.00	CDE ID and Version match
+CCDI	v2.0.0	survival	last_known_survival_status	CDS	v5.0.2	diagnosis	vital_status	2847330	1.00	2847330	1.00	CDE ID and Version match
+CCDI	v2.0.0	treatment	treatment_type	CDS	v5.0.2	treatment	treatment_type	14737565	1.00	14737565	1.00	CDE ID and Version match
+CCDI	v2.0.0	treatment_response	response	CDS	v5.0.2	treatment	response	13383448	1.00	13383448	1.00	CDE ID and Version match
+CCDI	v2.0.0	cell_line	cell_line_id	CDS	v5.0.2	N/A	N/A	14596104	1.00	N/A	N/a	Unmapped
+	v2.0.0	diagnosis	participant.study_participant_id		v5.0.2	diagnosis	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	file	study.phs_accession		v5.0.2	file	study.phs_accession	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	file	participant.study_participant_id		v5.0.2	file	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	file	sample.sample_id		v5.0.2	file	sample.sample_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	genomic_info	file.file_id		v5.0.2	genomic_info	file.file_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	image	file.file_id		v5.0.2	image	file.file_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	MultiplexMicroscopy	image.study_link_id		v5.0.2	MultiplexMicroscopy	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	NonDICOMCTimages	image.study_link_id		v5.0.2	NonDICOMCTimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	NonDICOMMRimages	image.study_link_id		v5.0.2	NonDICOMMRimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	NonDICOMpathologyImages	image.study_link_id		v5.0.2	NonDICOMpathologyImages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	NonDICOMPETimages	image.study_link_id		v5.0.2	NonDICOMPETimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	NonDICOMradiologyAllModalities	image.study_link_id		v5.0.2	NonDICOMradiologyAllModalities	image.study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	participant	study.phs_accession		v5.0.2	participant	study.phs_accession	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	proteomic	file.file_id		v5.0.2	proteomic	file.file_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	sample	participant.study_participant_id		v5.0.2	sample	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	study	program.program_acronym		v5.0.2	study	program.program_acronym	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	treatment	participant.study_participant_id		v5.0.2	treatment	participant.study_participant_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	participant	study_participant_id		v5.0.2	participant	study_participant_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	file	file_id		v5.0.2	file	file_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	image	study_link_id		v5.0.2	image	study_link_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	MultiplexMicroscopy	MultiplexMicroscopy_id		v5.0.2	MultiplexMicroscopy	MultiplexMicroscopy_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	NonDICOMpathologyImages	NonDICOMpathologyImages_id		v5.0.2	NonDICOMpathologyImages	NonDICOMpathologyImages_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	diagnosis	diagnosis_id		v5.0.2	diagnosis	diagnosis_id	N/A	N/A	N/A	N/A	N/A
+	v2.0.0	diagnosis	study_diagnosis_id		v5.0.2	diagnosis	study_diagnosis_id	N/A	N/A	N/A	N/A	N/A
