@@ -75,6 +75,14 @@ def addRequired(cds_df, required_columns, usednodes):
     return cds_df
 
 
+def addRelationships(cds_df, mdf, usednodes):
+    for node in usednodes:
+        nodekeys = getKeyFields(node, mdf)
+        for nodekey in nodekeys:
+            cds_df[nodekey] = None
+    return cds_df
+
+
 
 def populateRequired(cds_df, required_columns, keyrules):
     for index, row in cds_df.iterrows():
@@ -89,6 +97,20 @@ def populateRequired(cds_df, required_columns, keyrules):
                 cds_df.loc[index, field] = keystring
     return cds_df
     
+
+
+def getKeyFields(node, mdf):
+    keylist = []
+    edgelist = mdf.model.edges_by_src(mdf.model.nodes[node])
+    for edge in edgelist:
+        destnode = edge.dst.get_attr_dict()['handle']
+        #Filter out this node, no need to self reference
+        if destnode != node:
+            destprops = mdf.model.nodes[destnode].props
+            for destkey, destprop in destprops.items():
+                if destprop.get_attr_dict()['is_key'] == 'True':
+                    keylist.append(destnode+"."+destprop.get_attr_dict()['handle'])
+    return keylist
 
 
 def main(args):
@@ -133,7 +155,10 @@ def main(args):
     #
     
     cds_df = addRequired(cds_df, configs['required_columns'], usednodes)
-    cds_df = addRequired(cds_df, configs['relationship_columns'], usednodes)
+    #cds_df = addRequired(cds_df, configs['relationship_columns'], usednodes)
+    cds_df = addRelationships(cds_df, target_mdf, usednodes)
+    #re-do adding relationship columns so that they're autocreated, not hard coded
+
     
     #
     # Step 5: Now populate all those nodes
