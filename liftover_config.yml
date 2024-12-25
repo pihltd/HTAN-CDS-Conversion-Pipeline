@@ -13,94 +13,117 @@
   "treatment_outcome": "response"
   "file_format": "file_type"
   "imaging_modality": "image_modality"
-"required_columns":
-  "participant": 
-    - "study_participant_id" #Done dbgap+participant_id
-  "study":
-    - "study_diagnosis_id"  #phs, particpant_id, site_of_resection_or_biopsy
-  "file":
-    - "file_id" #Done file name, size, mdd5sum
-  "image":
-    - "study_link_id" #Done file name, size, md5sum
-  "MultiplexMicroscopy":
-    - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
-  "NonDICOMpathologyImages":
-    - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
-  "diagnosis":
-    - "diagnosis_id"
-    - "study_diagnosis_id"
+#"required_columns":
+#  "participant": 
+#    - "study_participant_id" #In model, req&key 
+#  "study":
+#    - "study_diagnosis_id"  #In model, req&key phs, particpant_id, site_of_resection_or_biopsy
+#  "file":
+#    - "file_id" # In Model, req&key, no defintion other than unique Done file name, size, mdd5sum
+#  "image":
+#    - "study_link_id" #In model, defined as a string and a number file name, size, md5sum
+#  "MultiplexMicroscopy":
+#    - "MultiplexMicroscopy_id" #In model, no description file name, size, mdd5sum
+#  "NonDICOMpathologyImages":
+#    - "NonDICOMpathologyImages_id" #In model, no description file name, size, mdd5sum
+#  "diagnosis":
+#    - "diagnosis_id" #In model, no description
+#    - "study_diagnosis_id"
 "keyrules":
   "diagnosis_id":
-    - "primary_diagnosis"
-    - "site_of_resection_or_biopsy"
-    - "study_acronym"
-    - "participant_id"
+    "compound": "No"
+    "method":
+      - "primary_diagnosis"
+      - "site_of_resection_or_biopsy"
+      - "study_acronym"
+      - "participant_id"
   "study_participant_id":
-    - "phs_accession"
-    - "participant_id"
+    "compound": "No"
+    "method":
+      - "phs_accession"
+      - "participant_id"
   "study_diagnosis_id":
-    - "phs_accession"
-    - "participant_id"
-    - "site_of_resection_or_biopsy"
+    "compound": "Yes"
+    "method":
+      - "diagnosis_id"
+      - "study_participant_id"
+     # - "phs_accession"
+      #- "participant_id"
+      #- "site_of_resection_or_biopsy"
   "file_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    "compound": "No"
+    "method":
+      - "file_name"
+      - "file_size"
+      - "md5sum"
+      #- "tumor_tissue_type"
   "study_link_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    "compound": "No"
+    "method":
+      - "phs_accession"
+      #- "file_name"
+      #- "file_size"
+      - "md5sum"
+      #- "tumor_tissue_type"
   "MultiplexMicroscopy_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    "compound": "No"
+    "method":
+      - "file_name"
+      - "file_size"
+      - "md5sum"
+      - "tumor_tissue_type"
   "NonDICOMpathologyImages_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    "compound": "No"
+    "method":
+      - "file_name"
+      - "file_size"
+      - "md5sum"
+      - "tumor_tissue_type"
   "phs_accession":
-    - "phs_accession"
+    "compound": "No"
+    "method":
+      - "phs_accession"
   "sample_id":
-    - "sample_id"
+    "compound": "No"
+    "method":
+      - "sample_id"
   "program_acronym":
-    - "study_acronym"
-"relationship_columns":
-  "diagnosis":
-    - participant.study_participant_id
-  "file":
-    - "study.phs_accession"
-    - "participant.study_participant_id"
-    - "sample.sample_id"
-  "genomic_info":
-    - "file.file_id"
-  "image":
-    - "file.file_id"
-  "MultiplexMicroscopy_id":
-    - "image.study_link_id"
-  "NonDICOMCTimages":
-    - "image.study_link_id"
-  "NonDICOMMRimages":
-    - "image.study_link_id"
-  "NonDICOMpathologyImages":
-   - "image.study_link_id"
-  "NonDICOMPETimages":
-    - "image.study_link_id"
-  "NonDICOMradiologyAllModalities":
-    - "image.study_link_id"
-  "participant":
-    - "study.phs_accession"
-  "proteomic":
-    - "file.file_id"
-  "sample":
-    - "participant.study_participant_id"
-  "study":
-    - "program.program_acronym"
-  "treatment":
-    - "participant.study_participant_id"
+    "compound": "No"
+    "method":
+     - "study_acronym"
+#"relationship_columns":
+#  "diagnosis":
+#    - participant.study_participant_id
+#  "file":
+#    - "study.phs_accession"
+#    - "participant.study_participant_id"
+#    - "sample.sample_id"
+#  "genomic_info":
+#    - "file.file_id"
+#  "image":
+#    - "file.file_id"
+#  "MultiplexMicroscopy_id":
+#    - "image.study_link_id"
+#  "NonDICOMCTimages":
+#    - "image.study_link_id"
+#  "NonDICOMMRimages":
+#    - "image.study_link_id"
+#  "NonDICOMpathologyImages":
+#   - "image.study_link_id"
+#  "NonDICOMPETimages":
+#    - "image.study_link_id"
+##  "NonDICOMradiologyAllModalities":
+#    - "image.study_link_id"
+#  "participant":
+#    - "study.phs_accession"
+#  "proteomic":
+#    - "file.file_id"
+#  "sample":
+#    - "participant.study_participant_id"
+#  "study":
+#    - "program.program_acronym"
+#  "treatment":
+#    - "participant.study_participant_id"
   
   
   

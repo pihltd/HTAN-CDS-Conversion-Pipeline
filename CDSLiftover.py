@@ -6,11 +6,15 @@ import bento_mdf
 
 
 def usedNodeLister(cds_df, mapping_df):
+    # Return a list of the nodes that are actually used, not just defined in the model
     nodelist = []
+    # List of the used properties
     cds_props = list(cds_df.columns)
     for prop in cds_props:
+        # Find out how many times the property has been mapped
         if prop in mapping_df['lift_from_property'].values:
             tempdf = mapping_df.loc[mapping_df['lift_from_property'] == prop]
+            # For each mapping, get the associated node, but only once
             for index, row in tempdf.iterrows():
                 if row['lift_to_node'] not in nodelist:
                     nodelist.append(row['lift_to_node'])
@@ -31,7 +35,7 @@ def moveit(cds_df, mapping_df, loadsheets ):
     return loadsheets
        
 
-       
+'''    
 def dropUnpopulated(loadsheets):
     # Remove sheets that don't have any data
     dropkeys = []
@@ -41,8 +45,7 @@ def dropUnpopulated(loadsheets):
     for node in dropkeys:
         loadsheets.pop(node, None)
     return loadsheets
-
-
+'''
 
 def dropDupes(loadsheets):
     #Remove duplicated rows and add Type column
@@ -57,7 +60,7 @@ def dropDupes(loadsheets):
 def generateKey(dfrow, rulelist):
     # Generates a "unique" string from the list of provided fields
     keystring = None
-    for rule in rulelist:
+    for rule in rulelist['method']:    
         if keystring is None:
             keystring = str(dfrow[rule])
         else:
@@ -65,26 +68,49 @@ def generateKey(dfrow, rulelist):
     return keystring
 
 
-
+'''
 def addRequired(cds_df, required_columns, usednodes):
-    # Adds required column
+    # NOT NEEDED, all required fields are in the model
+    # Adds required column (defined in configs)
+    # These are generally ID columns that CDS would populate post submission
     for node, fieldlist in required_columns.items():
         if node in usednodes:
             for field in fieldlist:
                 cds_df[field] = None
     return cds_df
-
+'''
 
 def addRelationships(cds_df, mdf, usednodes):
+    # Add the key fields from the data model
+    # This elimnates the need for the relationship_columns in the config file
+    keyfields = {}
     for node in usednodes:
         nodekeys = getKeyFields(node, mdf)
+        keyfields[node] = nodekeys
         for nodekey in nodekeys:
             cds_df[nodekey] = None
-    return cds_df
+    return cds_df, keyfields    
 
 
 
+def populateRequired2(cds_df, required_columns, keyrules, compoud):
+    #Need to do this row-by-row
+    for index, row in cds_df.iterrows():
+        for node, fieldlist in required_columns.items():
+            for field in fieldlist:
+                if "." in field:
+                    temp = field.split(".")
+                    keyfield = temp[-1]
+                else:
+                    keyfield = field
+                if keyrules[keyfield]['compound'] == compoud:
+                    keystring = generateKey(row, keyrules[keyfield])
+                    cds_df.loc[index, field] = keystring
+
+'''
 def populateRequired(cds_df, required_columns, keyrules):
+    # This adds values to the key fields based on rules in the config file
+    # TODO: Adapt to new rule structure, do compound No first
     for index, row in cds_df.iterrows():
         for node, fieldlist in required_columns.items():
             for field in fieldlist:
@@ -96,7 +122,7 @@ def populateRequired(cds_df, required_columns, keyrules):
                 keystring = generateKey(row, keyrules[keyfield])
                 cds_df.loc[index, field] = keystring
     return cds_df
-    
+'''    
 
 
 def getKeyFields(node, mdf):
@@ -120,7 +146,7 @@ def main(args):
     
     configs = crdclib.readYAML(args.configfile)
     
-    #Create a dataframe from the mapping file
+    #Create a dataframe from the liftover mapping file
     mapping_df = pd.read_csv(configs['liftovermap'], sep="\t", header=0)
     
     #Create a dataframe from the CDS submission excel sheet
@@ -148,15 +174,22 @@ def main(args):
     orphans = []
     for node in usednodes:
         props = target_nodes[node].props
-        loadsheets[node] = pd.DataFrame(columns=list(props.keys()))
+        proplist = list(props.keys())
+        # Drop all Template:No properties
+        for propname, prop in props.items():
+            if 'Template' in prop.tags:
+                if str(prop.tags['Template'].get_attr_dict()['value']) == 'No':
+                    proplist.remove(propname)
+        loadsheets[node] = pd.DataFrame(columns=proplist)
 
     #
     # Step 4: Add the required and relationship columns to the submission sheet.
     #
     
-    cds_df = addRequired(cds_df, configs['required_columns'], usednodes)
+    # Dont need to add required fields, they're already in the model
+    #cds_df = addRequired(cds_df, configs['required_columns'], usednodes)
     #cds_df = addRequired(cds_df, configs['relationship_columns'], usednodes)
-    cds_df = addRelationships(cds_df, target_mdf, usednodes)
+    cds_df, keyfields = addRelationships(cds_df, target_mdf, usednodes)
     #re-do adding relationship columns so that they're autocreated, not hard coded
 
     
@@ -164,8 +197,12 @@ def main(args):
     # Step 5: Now populate all those nodes
     #
     
-    cds_df = populateRequired(cds_df, configs['required_columns'], configs['keyrules'])
-    cds_df = populateRequired(cds_df, configs['relationship_columns'], configs['keyrules'])
+    # TODO: Needs some redoing, required columns are already in model and structure of keyrules has changed
+    #cds_df = populateRequired(cds_df, configs['required_columns'], configs['keyrules'])
+    #cds_df = populateRequired(cds_df, configs['relationship_columns'], configs['keyrules'])
+    #Need to do this twice, first to get the rules that don't rely on compoud fields, then for those that do
+    cds_df = populateRequired2(cds_df, keyfields, configs['keyrules'], "No")
+    cds_df = populateRequired2(cds_df, keyfields, configs['keyrules'], "Yes")
     
     #
     # Step 6: Move the data from the CDS Submission sheet to the DH Load sheet, starting with manually mapped fields
