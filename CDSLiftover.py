@@ -176,9 +176,12 @@ def main(args):
         props = target_nodes[node].props
         proplist = list(props.keys())
         # Drop all Template:No properties
+        # NOTE: This eliminates all the Required Columns
+        # REDO so that it keeps Template:No AND Key:True fields
         for propname, prop in props.items():
             if 'Template' in prop.tags:
-                if str(prop.tags['Template'].get_attr_dict()['value']) == 'No':
+                #if str(prop.tags['Template'].get_attr_dict()['value']) == 'No':
+                if (str(prop.tags['Template'].get_attr_dict()['value']) == 'No') and (prop['key'] != 'true'):
                     proplist.remove(propname)
         loadsheets[node] = pd.DataFrame(columns=proplist)
 
@@ -197,7 +200,8 @@ def main(args):
     # Step 5: Now populate all those nodes
     #
     
-    # TODO: Needs some redoing, required columns are already in model and structure of keyrules has changed
+    # THE PROBLEM:  Required columns are usually Template:No
+    # TODO: Did they get weeded out earlier.
     #cds_df = populateRequired(cds_df, configs['required_columns'], configs['keyrules'])
     #cds_df = populateRequired(cds_df, configs['relationship_columns'], configs['keyrules'])
     #Need to do this twice, first to get the rules that don't rely on compoud fields, then for those that do
