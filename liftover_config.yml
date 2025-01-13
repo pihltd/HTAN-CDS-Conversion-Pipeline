@@ -1,4 +1,4 @@
-"liftovermap": '.\examples\CDS_500_2_502_liftover.csv'
+"liftovermap": '.\examples\CDS_500_2_504_liftover.csv'
 "submission_spreadsheet": 'C:\Users\pihltd\Documents\modeltest\liftover\CDS_HTAN_imaging_v24.8.1_combined_20240905.xlsx'
 "submission_worksheet": 'CDS_HTAN_imaging_v24.8.1_combin'
 "output_directory": 'C:\Users\pihltd\Documents\modeltest\liftover\'

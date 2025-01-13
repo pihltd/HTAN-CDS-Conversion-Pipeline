@@ -89,7 +89,8 @@ def addRelationships(cds_df, mdf, usednodes):
         keyfields[node] = nodekeys
         for nodekey in nodekeys:
             cds_df[nodekey] = None
-    return cds_df, keyfields    
+    #return cds_df, keyfields
+    return {"df": cds_df, "key":keyfields}
 
 
 
@@ -106,6 +107,7 @@ def populateRequired2(cds_df, required_columns, keyrules, compoud):
                 if keyrules[keyfield]['compound'] == compoud:
                     keystring = generateKey(row, keyrules[keyfield])
                     cds_df.loc[index, field] = keystring
+    return cds_df
 
 '''
 def populateRequired(cds_df, required_columns, keyrules):
@@ -180,9 +182,10 @@ def main(args):
         # REDO so that it keeps Template:No AND Key:True fields
         for propname, prop in props.items():
             if 'Template' in prop.tags:
+                if 'key' in prop.tags:
                 #if str(prop.tags['Template'].get_attr_dict()['value']) == 'No':
-                if (str(prop.tags['Template'].get_attr_dict()['value']) == 'No') and (prop['key'] != 'true'):
-                    proplist.remove(propname)
+                    if (str(prop.tags['Template'].get_attr_dict()['value']) == 'No') and (prop['key'] != 'true'):
+                        proplist.remove(propname)
         loadsheets[node] = pd.DataFrame(columns=proplist)
 
     #
@@ -192,7 +195,10 @@ def main(args):
     # Dont need to add required fields, they're already in the model
     #cds_df = addRequired(cds_df, configs['required_columns'], usednodes)
     #cds_df = addRequired(cds_df, configs['relationship_columns'], usednodes)
-    cds_df, keyfields = addRelationships(cds_df, target_mdf, usednodes)
+    #cds_df, keyfields = addRelationships(cds_df, target_mdf, usednodes)
+    returnedjson = addRelationships(cds_df, target_mdf, usednodes)
+    cds_df = returnedjson['df']
+    keyfields = returnedjson['key']
     #re-do adding relationship columns so that they're autocreated, not hard coded
 
     
