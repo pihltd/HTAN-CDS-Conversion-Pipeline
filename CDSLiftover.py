@@ -2,6 +2,7 @@ import pandas as pd
 import argparse
 from crdclib import crdclib
 import bento_mdf
+import uuid
 
 
 
@@ -22,9 +23,11 @@ def usedNodeLister(cds_df, mapping_df):
 
 
     
-def moveit(cds_df, mapping_df, loadsheets ):
+def moveIt(cds_df, mapping_df, loadsheets ):
+    #NOTE:  Key fields may not be in mapping file.
     cds_columns = list(cds_df.columns)
     for cds_column in cds_columns:
+        #Create a new df from mapping_df where the lift from property is the cds column
         df = mapping_df.loc[mapping_df['lift_from_property'] == cds_column]
         for index, row in df.iterrows():
             new_column = row['lift_to_property']
@@ -34,18 +37,6 @@ def moveit(cds_df, mapping_df, loadsheets ):
                 temp_df[new_column] = cds_df[cds_column].copy()
     return loadsheets
        
-
-'''    
-def dropUnpopulated(loadsheets):
-    # Remove sheets that don't have any data
-    dropkeys = []
-    for node, df in loadsheets.items():
-        if len(df) == 0:
-            dropkeys.append(node)
-    for node in dropkeys:
-        loadsheets.pop(node, None)
-    return loadsheets
-'''
 
 def dropDupes(loadsheets):
     #Remove duplicated rows and add Type column
@@ -57,211 +48,282 @@ def dropDupes(loadsheets):
 
 
 
-def generateKey(dfrow, rulelist):
+def generateKey(dfrow, rulelist, field):
     # Generates a "unique" string from the list of provided fields
     keystring = None
-    for rule in rulelist['method']:    
-        if keystring is None:
-            keystring = str(dfrow[rule])
-        else:
-            keystring = keystring+"|"+str(dfrow[rule])
+    
+    if rulelist['compound'] == "No":
+        keystring = str(uuid.uuid4())
+    elif rulelist['compound'] == 'Exempt':
+        if field in dfrow:
+            keystring = str(dfrow[field])
+    elif rulelist['compound'] == "Yes":
+        for rule in rulelist['method']:
+            if keystring is None:
+                keystring = str(dfrow[rule])
+            else:
+                keystring = keystring+"_"+str(dfrow[rule])
+                # For unknown reasons, CDS uses _ instead of |
     return keystring
 
+     
 
-'''
-def addRequired(cds_df, required_columns, usednodes):
-    # NOT NEEDED, all required fields are in the model
-    # Adds required column (defined in configs)
-    # These are generally ID columns that CDS would populate post submission
-    for node, fieldlist in required_columns.items():
-        if node in usednodes:
-            for field in fieldlist:
-                cds_df[field] = None
+def populateKey(cds_df,keyfields, keyrules, compoundvalue):
+    #cols = list(cds_df.columns)
+    #print(cols)
+    for keyfieldlist in keyfields.values():
+        for keyfield in keyfieldlist:
+            if keyrules[keyfield]['compound'] == compoundvalue:
+                keystring = None
+                for index, row in cds_df.iterrows():
+                    keystring = generateKey(row, keyrules[keyfield], keyfield)
+                    # Have to change program acronym to study acronym because the spreadsheet uses study, not program.
+                    #if keyfield == 'proteomic_info_id':
+                    #    print(f"Field: {keyfield}\t Value: {keystring}")
+                    if compoundvalue == 'Yes':
+                        print(keyfield)
+                    if keyfield == 'study_diagnosis_id':
+                        print(f"Field: {keyfield}\t Value: {keystring}")
+                    if keyfield == 'program_acronym':
+                        cds_df.loc[index, 'study_acronym'] = keystring
+                    else:
+                        cds_df.loc[index, keyfield] = keystring
     return cds_df
-'''
+            
 
-def addRelationships(cds_df, mdf, usednodes):
-    # Add the key fields from the data model
-    # This elimnates the need for the relationship_columns in the config file
-    keyfields = {}
-    for node in usednodes:
-        nodekeys = getKeyFields(node, mdf)
-        keyfields[node] = nodekeys
-        for nodekey in nodekeys:
-            cds_df[nodekey] = None
-    #return cds_df, keyfields
-    return {"df": cds_df, "key":keyfields}
-
-
-
-def populateRequired2(cds_df, required_columns, keyrules, compoud):
-    #Need to do this row-by-row
-    for index, row in cds_df.iterrows():
-        for node, fieldlist in required_columns.items():
-            for field in fieldlist:
-                if "." in field:
-                    temp = field.split(".")
-                    keyfield = temp[-1]
-                else:
-                    keyfield = field
-                if keyrules[keyfield]['compound'] == compoud:
-                    keystring = generateKey(row, keyrules[keyfield])
+def populateRelations(cds_df, relation_columns, keyrules, compound):
+    #Need to do this row-by-row but first check that we need to do it at all
+    #relation_columns is a dict of node:[fieldlist]
+    for node, fieldlist in relation_columns.items():
+        for field in fieldlist:
+            if "." in field:
+                temp = field.split(".")
+                keyfield = temp[-1]
+            else:
+                keyfield = field
+            if keyrules[keyfield]['compound'] == compound:
+                for index, row in cds_df.iterrows():
+                    keystring = generateKey(row, keyrules[keyfield], keyfield)
                     cds_df.loc[index, field] = keystring
     return cds_df
 
-'''
-def populateRequired(cds_df, required_columns, keyrules):
-    # This adds values to the key fields based on rules in the config file
-    # TODO: Adapt to new rule structure, do compound No first
-    for index, row in cds_df.iterrows():
-        for node, fieldlist in required_columns.items():
-            for field in fieldlist:
-                if "." in field:
-                    temp = field.split(".")
-                    keyfield = temp[-1]
-                else:
-                    keyfield = field
-                keystring = generateKey(row, keyrules[keyfield])
-                cds_df.loc[index, field] = keystring
+
+def getKeyProps(mdf):
+    keyprops = {}
+    nodes = mdf.model.nodes
+    for node in nodes:
+        temp = []
+        nodeprops = nodes[node].props
+        for propinfo, prop in nodeprops.items():
+            if prop.get_attr_dict()['is_key'] == 'True':
+                temp.append(propinfo)
+        keyprops[node] = temp
+    return keyprops
+
+def getRelationFields(mdf):
+    #Uses edges to pull out the relation fields for each node
+    relationfields = {}
+    nodes = mdf.model.nodes
+    for node in nodes:
+        temp = []
+        edgelist = mdf.model.edges_by_src(mdf.model.nodes[node])
+        for edge in edgelist:
+            destnode = edge.dst.get_attr_dict()['handle']
+            #Filter out self-reference to this node
+            if destnode != node:
+                destprops = mdf.model.nodes[destnode].props
+                for destprop in destprops.values():
+                    if destprop.get_attr_dict()['is_key'] == 'True':
+                        temp.append(destnode+"."+destprop.get_attr_dict()['handle'])
+        relationfields[node] = temp
+    return relationfields
+         
+
+
+        
+def usedKeyFields(keyfields, usednodes):
+    temp = {}
+    for keynode, keyfieldlist in keyfields.items():
+        if keynode in usednodes:
+            temp[keynode] = keyfieldlist
+    return temp
+
+
+
+def addManualKeys(keyfields, manualkeys):
+    for node, keylist in manualkeys.items():
+        if node in keyfields:
+            for key in keylist:
+                keyfields[node] = keyfields[node].append(key)
+            else:
+                keyfields[node] = keylist
+    return keyfields
+
+
+
+def buildLoadsheets(usednodes, target_nodes, target_props, keyfields, relationfields):
+    loadsheets = {}
+    for node in usednodes:
+        props = target_nodes[node].props
+        proplist = list(props.keys())
+        #Drop everything with Template:No
+        for prop in proplist:
+            testprop = target_props[(node,prop)]
+            if 'Template' in testprop.tags:
+                if str(testprop.tags['Template'].get_attr_dict()['value']) == 'No':
+                    proplist.remove(prop)
+        #Now go back and add the key and relationships 
+        for keyprop in keyfields[node]:
+            if keyprop not in proplist:
+                proplist.append(keyprop)
+        for relprop in relationfields[node]:
+            if relprop not in proplist:
+                proplist.append(relprop)
+        # Lastly build the dataframe
+        loadsheets[node] = pd.DataFrame(columns=proplist)
+    return loadsheets
+
+
+def addKeyRelColumns(cds_df, usednodes, keyfields, relationfields):
+    cdsfields = list(cds_df.columns)
+    for node in usednodes:
+        for key in keyfields[node]:
+            if key not in cdsfields:
+                cds_df[key] = None
+        for rel in relationfields[node]:
+            if rel not in cdsfields:
+                cds_df[rel] = None
     return cds_df
-'''    
-
-
-def getKeyFields(node, mdf):
-    keylist = []
-    edgelist = mdf.model.edges_by_src(mdf.model.nodes[node])
-    for edge in edgelist:
-        destnode = edge.dst.get_attr_dict()['handle']
-        #Filter out this node, no need to self reference
-        if destnode != node:
-            destprops = mdf.model.nodes[destnode].props
-            for destkey, destprop in destprops.items():
-                if destprop.get_attr_dict()['is_key'] == 'True':
-                    keylist.append(destnode+"."+destprop.get_attr_dict()['handle'])
-    return keylist
-
 
 def main(args):
     #
     #  Step 1:  Set up the basics.  Get configs, read the mapping file, and read the submission sheet
     #
     
+    # Get configs
+    if args.verbose:
+        print("Reading configurations")
     configs = crdclib.readYAML(args.configfile)
     
     #Create a dataframe from the liftover mapping file
+    if args.verbose:
+        print("Creating liftover dataframe")
     mapping_df = pd.read_csv(configs['liftovermap'], sep="\t", header=0)
     
     #Create a dataframe from the CDS submission excel sheet
+    if args.verbose:
+        print("Creating dataframe from Excel submission sheet")
     cds_df = pd.read_excel(configs['submission_spreadsheet'], sheet_name=configs['submission_worksheet'])
     #Drop all columns that have nothing but NaN
+    if args.verbose:
+        print("Dropping all empty columns")
     cds_df = cds_df.dropna(axis=1, how='all')
     
     #Read the target model
+    if args.verbose:
+        print("Reading target data model and creating node and property lists")
     target_mdf = bento_mdf.MDF(*configs['target_model'])
     target_nodes = target_mdf.model.nodes
+    target_props = target_mdf.model.props
+    
+    # Get all fields in the model marked as key
+    if args.verbose:
+        print("Getting key fields from model")
+    keyfields = getKeyProps(target_mdf)
+    # Add any manual key fields from the config file
+    if args.verbose:
+        print("Adding any manuallly provided key fields")
+    keyfields = addManualKeys(keyfields, configs['manual_key'])
+    # Get the relationship fields from the model edges
+    if args.verbose:
+        print("Getting relationship fields from model edges")
+    relationfields = getRelationFields(target_mdf)
+    
+    
     
     #
     # Step 2:  Get a list of all the nodes that actually have data
     #
-    
+    if args.verbose:
+        print("Remove all nodes without any data")
     usednodes = usedNodeLister(cds_df, mapping_df)
     
     #
-    # Step 3, create the collection of load sheets
+    # Step 3: Adjust keyfields so that it only includes used nodes
     #
+    if args.verbose:
+        print("Removing key fields that won't be used")
+    keyfields = usedKeyFields(keyfields, usednodes)
     
+    #
+    # Step 4: create the collection of load sheets
+    #
     # loadsheets will be a dictionary of dataframes.  Key is node, value is dataframe for that node
-    loadsheets = {}
-    # Orphans is a list of fields with no mapping
-    orphans = []
-    for node in usednodes:
-        props = target_nodes[node].props
-        proplist = list(props.keys())
-        # Drop all Template:No properties
-        # NOTE: This eliminates all the Required Columns
-        # REDO so that it keeps Template:No AND Key:True fields
-        for propname, prop in props.items():
-            if 'Template' in prop.tags:
-                if 'key' in prop.tags:
-                #if str(prop.tags['Template'].get_attr_dict()['value']) == 'No':
-                    if (str(prop.tags['Template'].get_attr_dict()['value']) == 'No') and (prop['key'] != 'true'):
-                        proplist.remove(propname)
-        loadsheets[node] = pd.DataFrame(columns=proplist)
+    if args.verbose:
+        print("Creating the loadsheet collection")
+    loadsheets = buildLoadsheets(usednodes, target_nodes, target_props, keyfields, relationfields)
+    
+    #
+    # Step 5: Add the key and relationship columns to the cds_df
+    #
+    if args.verbose:
+        print("Adding the key and relationship columns to the Excel dataframe")
+    cds_df = addKeyRelColumns(cds_df, usednodes, keyfields, relationfields)
+                    
+    #
+    # Step 6: Populate key and relationships in the cds_df
+    #
+    
+    # Start with keys
+    if args.verbose:
+        print("Populateing Exempt Keys")
+    cds_df = populateKey(cds_df, keyfields, configs['keyrules'], 'Exempt')
+    if args.verbose:
+        print("Popluating No keys")
+    cds_df = populateKey(cds_df, keyfields, configs['keyrules'], 'No' )
+    if args.verbose:
+        print("Populating Yes keys")
+    cds_df = populateKey(cds_df,keyfields, configs['keyrules'], 'Yes' )
+    
+    # And now for the relationships
+    if args.verbose:
+        print("Populating No relationships")
+    cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "No")
+    if args.verbose:
+        print("Populating Yes relationships")
+    cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "Yes")
+    
+    #
+    # Step 7: Move the data in the Excel sheet to the loadsheets
+    #
+    if args.verbose:
+        print("Moving data from the Excel dataframe to the loadsheets")
+    loadsheets = moveIt(cds_df, mapping_df, loadsheets)
 
+        
     #
-    # Step 4: Add the required and relationship columns to the submission sheet.
+    # Step 8: General clean-up
     #
-    
-    # Dont need to add required fields, they're already in the model
-    #cds_df = addRequired(cds_df, configs['required_columns'], usednodes)
-    #cds_df = addRequired(cds_df, configs['relationship_columns'], usednodes)
-    #cds_df, keyfields = addRelationships(cds_df, target_mdf, usednodes)
-    returnedjson = addRelationships(cds_df, target_mdf, usednodes)
-    cds_df = returnedjson['df']
-    keyfields = returnedjson['key']
-    #re-do adding relationship columns so that they're autocreated, not hard coded
-
-    
-    #
-    # Step 5: Now populate all those nodes
-    #
-    
-    # THE PROBLEM:  Required columns are usually Template:No
-    # TODO: Did they get weeded out earlier.
-    #cds_df = populateRequired(cds_df, configs['required_columns'], configs['keyrules'])
-    #cds_df = populateRequired(cds_df, configs['relationship_columns'], configs['keyrules'])
-    #Need to do this twice, first to get the rules that don't rely on compoud fields, then for those that do
-    cds_df = populateRequired2(cds_df, keyfields, configs['keyrules'], "No")
-    cds_df = populateRequired2(cds_df, keyfields, configs['keyrules'], "Yes")
-    
-    #
-    # Step 6: Move the data from the CDS Submission sheet to the DH Load sheet, starting with manually mapped fields
-    #
-    
-    cds_columns = list(cds_df.columns)
-    #Loop through the columns
-    for cds_column in cds_columns:
-        # Currently, manual takes precedence over automated
-        if cds_column in configs['manual'].keys():
-            manual_field = configs['manual'][cds_column]
-            loadsheets = moveit(cds_df, mapping_df, loadsheets)
-        elif cds_column in mapping_df['lift_from_property'].unique():
-            loadsheets = moveit(cds_df, mapping_df, loadsheets)
-        else:
-            orphans.append(cds_column)
-    
-    #
-    # Step 7: General clean-up
-    #
-    
-    # Go through the dataframes and drop all rows that are nothing but NaN
-    for node, df in loadsheets.items():
-        temp_df = df.dropna(how='all')
-        loadsheets[node] = temp_df
 
     # Drop all duplicate rows and Insert the mandatory type column
+    if args.verbose:
+        print("Dropping duplicate lines from loadsheets")
     loadsheets = dropDupes(loadsheets)
     
     #
-    # Step 8: And that should do it, just write out the DH style load sheets
+    # Step 9: And that should do it, just write out the DH style load sheets
     #
-    
+    if args.verbose:
+        print("Writing the loadsheets to file")
     for node, df in loadsheets.items():
         filename = configs['output_directory']+"CDS_"+node+"_template.tsv"
-        df.to_csv(filename, sep="\t", index=False)
-    #Print out the orphan fields
-    if len(orphans) > 0:
-        orphanfile = configs['output_directory']+"OrphanReport.csv"
-        with open(orphanfile,"w") as f:
-            for orphan in orphans:
-                f.write(f"{orphan}\n")
-    
-    
+        df.to_csv(filename, sep="\t", index=False)   
  
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--configfile", required=True,  help="Configuration file containing all the input info")
+    parser.add_argument("-v", "--verbose", action='store_true', help="Verbose output")
 
     args = parser.parse_args()
 

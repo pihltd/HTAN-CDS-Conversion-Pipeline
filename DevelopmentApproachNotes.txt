@@ -1,0 +1,12 @@
+Step 1: Prep target model and submission spreadsheet
+Step 2: figure out which nodes will actually get data from the spreadsheet
+Step 3: Create the dictionary containing the load sheets.  Key is node, value is loadsheet
+Step 4: Edit loadsheets to have key fields, but not Template: No fields
+  - Key: Yes, Template: No - Keep
+  - Key: No, Template: No - Discard
+  - Key: No, Template: Yes - Keep
+Step 5: Edit loadsheets to have relationship fields
+Step 6: Process each row in the Excel sheet
+  - 6a: Add provided data
+  - 6b: Add key data
+  - 6c: Add relationship data
