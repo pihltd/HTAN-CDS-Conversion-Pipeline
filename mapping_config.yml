@@ -2,52 +2,8 @@
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model.yml"
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model-props.yml"
 "new_version_files":
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model.yml"
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model-props.yml"
-"mapping_file": '.\examples\CDS_500_2_502_liftover.csv'
-"relationship_columns":
-  "diagnosis":
-    - participant.study_participant_id
-  "file":
-    - "study.phs_accession"
-    - "participant.study_participant_id"
-    - "sample.sample_id"
-  "genomic_info":
-    - "file.file_id"
-  "image":
-    - "file.file_id"
-  "MultiplexMicroscopy":
-    - "image.study_link_id"
-  "NonDICOMCTimages":
-    - "image.study_link_id"
-  "NonDICOMMRimages":
-    - "image.study_link_id"
-  "NonDICOMpathologyImages":
-   - "image.study_link_id"
-  "NonDICOMPETimages":
-    - "image.study_link_id"
-  "NonDICOMradiologyAllModalities":
-    - "image.study_link_id"
-  "participant":
-    - "study.phs_accession"
-  "proteomic":
-    - "file.file_id"
-  "sample":
-    - "participant.study_participant_id"
-  "study":
-    - "program.program_acronym"
-  "treatment":
-    - "participant.study_participant_id"
-"required_columns":
-  "participant": 
-    - "study_participant_id" #Done dbgap+participant_id
-  "study":
-    - "study_diagnosis_id"  #phs, particpant_id, site_of_resection_or_biopsy
-  "file":
-    - "file_id" #Done file name, size, mdd5sum
-  "image":
-    - "study_link_id" #Done file name, size, md5sum
-  "MultiplexMicroscopy":
-    - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
-  "NonDICOMpathologyImages":
-    - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.4/model-desc/cds-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.4/model-desc/cds-model-props.yml"
+"mapping_file": '.\examples\TEST_CDS_500_2_504_liftover.csv'
+"old_df": '.\examples\TEST_old_df_info.csv'
+"new_df": '.\examples\TEST_new_df_info.csv'

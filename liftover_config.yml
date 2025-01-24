@@ -1,4 +1,4 @@
-"liftovermap": '.\examples\CDS_500_2_502_liftover.csv'
+"liftovermap": '.\examples\TEST_CDS_500_2_504_liftover.csv'
 "submission_spreadsheet": 'C:\Users\pihltd\Documents\modeltest\liftover\CDS_HTAN_imaging_v24.8.1_combined_20240905.xlsx'
 "submission_worksheet": 'CDS_HTAN_imaging_v24.8.1_combin'
 "output_directory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
@@ -13,94 +13,71 @@
   "treatment_outcome": "response"
   "file_format": "file_type"
   "imaging_modality": "image_modality"
-"required_columns":
-  "participant": 
-    - "study_participant_id" #Done dbgap+participant_id
-  "study":
-    - "study_diagnosis_id"  #phs, particpant_id, site_of_resection_or_biopsy
-  "file":
-    - "file_id" #Done file name, size, mdd5sum
-  "image":
-    - "study_link_id" #Done file name, size, md5sum
-  "MultiplexMicroscopy":
-    - "MultiplexMicroscopy_id" #Done file name, size, mdd5sum
-  "NonDICOMpathologyImages":
-    - "NonDICOMpathologyImages_id" #Done file name, size, mdd5sum
+  "proteomic_info_id": "proteomic_info_id"
+# The keyrules are an attempt to make a machine actionable list of what to do with key fields.
+# If compound is No, a UUID will be generated.
+# If compound is Yes, the fields in method will be concatenated
+# If compound is Exempt, use the submitter provided values.
+# There are some instances where a field is not key, but is used in the keyrules.  Add them here as node:field
+"manual_key":
   "diagnosis":
     - "diagnosis_id"
-    - "study_diagnosis_id"
 "keyrules":
   "diagnosis_id":
-    - "primary_diagnosis"
-    - "site_of_resection_or_biopsy"
-    - "study_acronym"
-    - "participant_id"
+    "compound": "No"
   "study_participant_id":
-    - "phs_accession"
-    - "participant_id"
+    "compound": "Yes"
+    "method":
+      - "phs_accession"
+      - "participant_id"
   "study_diagnosis_id":
+    "compound": "Yes"
+    "method":
+      - "diagnosis_id"
+      - "phs_accession"
+      - "participant_id"
+  "file_id":
+    "compound": "No"
+  "study_link_id":
+    "compound": "No"
+  "treatment_id":
+    "compound": "Yes"
+    "method":
     - "phs_accession"
     - "participant_id"
-    - "site_of_resection_or_biopsy"
-  "file_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
-  "study_link_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    - "therapeutic_agents"
+  "genomic_info_id":
+    "compound": "Yes"
+    "method":
+      - "file_id"
+      - "library_id"
   "MultiplexMicroscopy_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    "compound": "No"
+  "NonDICOMMRimages_id":
+    "compound": "No"
+  "NonDICOMCTimages_id":
+    "compound": "No"
+  "NonDICOMPETimages_id":
+    "compound": "No"
+  "NonDICOMradiologyAllModalities_id":
+    "compound": "No"
   "NonDICOMpathologyImages_id":
-    - "file_name"
-    - "file_size"
-    - "md5sum"
-    - "tumor_tissue_type"
+    "compound": "No"
+    "method":
+      - "file_name"
+      - "file_size"
+      - "md5sum"
+      - "tumor_tissue_type"
+  "proteomic_info_id":
+    "compound": "No"
+  "data_version_id":
+    "compound": "No"
   "phs_accession":
-    - "phs_accession"
+    "compound": "Exempt"
   "sample_id":
-    - "sample_id"
+    "compound": "No"
   "program_acronym":
-    - "study_acronym"
-"relationship_columns":
-  "diagnosis":
-    - participant.study_participant_id
-  "file":
-    - "study.phs_accession"
-    - "participant.study_participant_id"
-    - "sample.sample_id"
-  "genomic_info":
-    - "file.file_id"
-  "image":
-    - "file.file_id"
-  "MultiplexMicroscopy_id":
-    - "image.study_link_id"
-  "NonDICOMCTimages":
-    - "image.study_link_id"
-  "NonDICOMMRimages":
-    - "image.study_link_id"
-  "NonDICOMpathologyImages":
-   - "image.study_link_id"
-  "NonDICOMPETimages":
-    - "image.study_link_id"
-  "NonDICOMradiologyAllModalities":
-    - "image.study_link_id"
-  "participant":
-    - "study.phs_accession"
-  "proteomic":
-    - "file.file_id"
-  "sample":
-    - "participant.study_participant_id"
-  "study":
-    - "program.program_acronym"
-  "treatment":
-    - "participant.study_participant_id"
+    "compound": "Exempt"
   
   
   
