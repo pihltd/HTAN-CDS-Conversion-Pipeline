@@ -322,3 +322,4 @@ v5.0.0	NonDICOMpathologyImages	image.study_link_id	v5.0.4	NonDICOMpathologyImage
 v5.0.0	NonDICOMPETimages	image.study_link_id	v5.0.4	NonDICOMPETimages	image.study_link_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	NonDICOMradiologyAllModalities	image.study_link_id	v5.0.4	NonDICOMradiologyAllModalities	image.study_link_id	N/A	N/A	N/A	N/A	N/A
 v5.0.0	proteomic	file.file_id	v5.0.4	proteomic	file.file_id	N/A	N/A	N/A	N/A	N/A
+v5.0.0	proteomic	proteomic_info_id	v5.0.4	proteomic	proteomic_info_id	N/A	N/A	N/A	N/A	N/A

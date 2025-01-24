@@ -69,8 +69,6 @@ def generateKey(dfrow, rulelist, field):
      
 
 def populateKey(cds_df,keyfields, keyrules, compoundvalue):
-    #cols = list(cds_df.columns)
-    #print(cols)
     for keyfieldlist in keyfields.values():
         for keyfield in keyfieldlist:
             if keyrules[keyfield]['compound'] == compoundvalue:
@@ -78,12 +76,6 @@ def populateKey(cds_df,keyfields, keyrules, compoundvalue):
                 for index, row in cds_df.iterrows():
                     keystring = generateKey(row, keyrules[keyfield], keyfield)
                     # Have to change program acronym to study acronym because the spreadsheet uses study, not program.
-                    #if keyfield == 'proteomic_info_id':
-                    #    print(f"Field: {keyfield}\t Value: {keystring}")
-                    if compoundvalue == 'Yes':
-                        print(keyfield)
-                    if keyfield == 'study_diagnosis_id':
-                        print(f"Field: {keyfield}\t Value: {keystring}")
                     if keyfield == 'program_acronym':
                         cds_df.loc[index, 'study_acronym'] = keystring
                     else:
@@ -152,11 +144,14 @@ def usedKeyFields(keyfields, usednodes):
 
 def addManualKeys(keyfields, manualkeys):
     for node, keylist in manualkeys.items():
+        # If the node isn't already in they keyfields, it means it was dropped and can be ignormed.
         if node in keyfields:
             for key in keylist:
-                keyfields[node] = keyfields[node].append(key)
-            else:
-                keyfields[node] = keylist
+                temp = keyfields[node]
+                temp.append(key)
+                keyfields[node] =temp
+        else:
+            keyfields[node] = keylist
     return keyfields
 
 
@@ -194,6 +189,10 @@ def addKeyRelColumns(cds_df, usednodes, keyfields, relationfields):
             if rel not in cdsfields:
                 cds_df[rel] = None
     return cds_df
+
+def writeDF(pathname, filename, df):
+        df.to_csv(pathname+filename, sep="\t", index=False)
+
 
 def main(args):
     #
@@ -276,22 +275,30 @@ def main(args):
     
     # Start with keys
     if args.verbose:
-        print("Populateing Exempt Keys")
+        print("Populating Exempt Keys")
     cds_df = populateKey(cds_df, keyfields, configs['keyrules'], 'Exempt')
+    if args.logprogress:
+        writeDF(configs['output_directory'], "exemptCDS.csv", cds_df)
     if args.verbose:
-        print("Popluating No keys")
+        print("Populating No keys")
     cds_df = populateKey(cds_df, keyfields, configs['keyrules'], 'No' )
+    if args.logprogress:
+        writeDF(configs['output_directory'], "noCDS.csv", cds_df)
     if args.verbose:
         print("Populating Yes keys")
     cds_df = populateKey(cds_df,keyfields, configs['keyrules'], 'Yes' )
+    if args.logprogress:
+        writeDF(configs['output_directory'], "yesCDS.csv", cds_df)
     
     # And now for the relationships
     if args.verbose:
         print("Populating No relationships")
     cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "No")
+    writeDF(configs['output_directory'], "noRelationsCDS.csv", cds_df)
     if args.verbose:
         print("Populating Yes relationships")
     cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "Yes")
+    writeDF(configs['output_directory'], "yesRelationsCDS.csv", cds_df)
     
     #
     # Step 7: Move the data in the Excel sheet to the loadsheets
@@ -324,6 +331,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--configfile", required=True,  help="Configuration file containing all the input info")
     parser.add_argument("-v", "--verbose", action='store_true', help="Verbose output")
+    parser.add_argument("-l", "--logprogress", action='store_true', help="Write out CDS Dataframe at each step")
 
     args = parser.parse_args()
 

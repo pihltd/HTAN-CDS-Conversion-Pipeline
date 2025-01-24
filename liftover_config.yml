@@ -13,6 +13,7 @@
   "treatment_outcome": "response"
   "file_format": "file_type"
   "imaging_modality": "image_modality"
+  "proteomic_info_id": "proteomic_info_id"
 # The keyrules are an attempt to make a machine actionable list of what to do with key fields.
 # If compound is No, a UUID will be generated.
 # If compound is Yes, the fields in method will be concatenated
