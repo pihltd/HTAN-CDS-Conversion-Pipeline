@@ -78,6 +78,8 @@ def populateKey(cds_df,keyfields, keyrules, compoundvalue):
                     # Have to change program acronym to study acronym because the spreadsheet uses study, not program.
                     if keyfield == 'program_acronym':
                         cds_df.loc[index, 'study_acronym'] = keystring
+                    elif keyfield == 'file_id':
+                        cds_df.loc[index, 'file_id'] = "dg.4DFC/"+keystring
                     else:
                         cds_df.loc[index, keyfield] = keystring
     return cds_df
