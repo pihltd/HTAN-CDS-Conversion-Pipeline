@@ -3,6 +3,7 @@ import argparse
 from crdclib import crdclib
 import bento_mdf
 import uuid
+import hashlib
 
 
 
@@ -46,23 +47,52 @@ def dropDupes(loadsheets):
         loadsheets[node] = temp_df
     return loadsheets
 
+def rowHash(row):
+    hashstring = None
+    rowlist = row.values.flatten().tolist()
+    rowlist = str(rowlist)
+    #print(rowlist)
+    hashstring = ''.join(rowlist)
+    #print(hashstring)
+    #for value in rowlist:
+    #    if hashstring == None:
+    #        hashstring = str(value)
+    #    else:
+    #        hashstring = hashstring+"^"+str(value)
+    if hashstring is not None:
+        #hashstring = str(hash(hashstring))
+        hashstring = hashlib.md5(hashstring.encode()).hexdigest()
+    return hashstring
 
 
-def generateKey(dfrow, rulelist, field):
+def generateKey(dfrow, rulelist, field, index):
     # Generates a "unique" string from the list of provided fields
     keystring = None
     
     if rulelist['compound'] == "No":
-        keystring = str(uuid.uuid4())
+        #keystring = str(uuid.uuid4())
+        keystring = rowHash(dfrow)
     elif rulelist['compound'] == 'Exempt':
-        if field in dfrow:
+        if field == "diagnosis_id":
+            keystring = dfrow['participant_id']+"_"+str(index)
+        elif field =="file_id":
+            keystring = "dg.4DFC/"+str(uuid.uuid4())
+            #print(f"Field: {field}\t Keystring {keystring}") 
+        elif field in dfrow:
             keystring = str(dfrow[field])
     elif rulelist['compound'] == "Yes":
         for rule in rulelist['method']:
+            #print(rule)
             if keystring is None:
-                keystring = str(dfrow[rule])
+                if rule == 'index':
+                    keystring = str(index)
+                else:
+                    keystring = str(dfrow[rule])
             else:
-                keystring = keystring+"_"+str(dfrow[rule])
+                if rule == 'index':
+                    keystring = keystring+"_"+str(index)
+                else:
+                    keystring = keystring+"_"+str(dfrow[rule])
                 # For unknown reasons, CDS uses _ instead of |
     return keystring
 
@@ -74,12 +104,13 @@ def populateKey(cds_df,keyfields, keyrules, compoundvalue):
             if keyrules[keyfield]['compound'] == compoundvalue:
                 keystring = None
                 for index, row in cds_df.iterrows():
-                    keystring = generateKey(row, keyrules[keyfield], keyfield)
+                    #print(f"Key keyrules: {keyrules[keyfield]}\t Keyfield: {keyfield}")
+                    keystring = generateKey(row, keyrules[keyfield], keyfield, index)
                     # Have to change program acronym to study acronym because the spreadsheet uses study, not program.
                     if keyfield == 'program_acronym':
                         cds_df.loc[index, 'study_acronym'] = keystring
-                    elif keyfield == 'file_id':
-                        cds_df.loc[index, 'file_id'] = "dg.4DFC/"+keystring
+                    #elif keyfield == 'file_id':
+                    #    cds_df.loc[index, 'file_id'] = keystring
                     else:
                         cds_df.loc[index, keyfield] = keystring
     return cds_df
@@ -97,7 +128,8 @@ def populateRelations(cds_df, relation_columns, keyrules, compound):
                 keyfield = field
             if keyrules[keyfield]['compound'] == compound:
                 for index, row in cds_df.iterrows():
-                    keystring = generateKey(row, keyrules[keyfield], keyfield)
+                    #print(f"Relations keyrules: {keyrules[keyfield]}\t Keyfield: {keyfield}")
+                    keystring = generateKey(row, keyrules[keyfield], keyfield, index)
                     cds_df.loc[index, field] = keystring
     return cds_df
 
@@ -294,13 +326,20 @@ def main(args):
     
     # And now for the relationships
     if args.verbose:
+        print("Populating Exempt relationships")
+    cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "Exempt")
+    if args.verbose:
+        writeDF(configs['output_directory'], "ExemptRelationsCDS.csv", cds_df)
+    if args.verbose:
         print("Populating No relationships")
     cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "No")
-    writeDF(configs['output_directory'], "noRelationsCDS.csv", cds_df)
+    if args.verbose:
+        writeDF(configs['output_directory'], "noRelationsCDS.csv", cds_df)
     if args.verbose:
         print("Populating Yes relationships")
     cds_df = populateRelations(cds_df, relationfields, configs['keyrules'], "Yes")
-    writeDF(configs['output_directory'], "yesRelationsCDS.csv", cds_df)
+    if args.verbose:
+        writeDF(configs['output_directory'], "yesRelationsCDS.csv", cds_df)
     
     #
     # Step 7: Move the data in the Excel sheet to the loadsheets

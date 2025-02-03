@@ -1,0 +1,106 @@
+"liftovermap": '.\examples\TEST_CDS_500_2_504_liftover.csv'
+"submission_spreadsheet": 'C:\Users\pihltd\Documents\modeltest\liftover\CDS_HTAN_imaging_v24.8.1_combined_20240905.xlsx'
+"submission_worksheet": 'CDS_HTAN_imaging_v24.8.1_combin'
+"output_directory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
+"target_model":
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/main/model-desc/cds-model-props.yml"
+#Manual mapping is represented as old:new
+"manual":
+  "de-identification_method_type": "de_identification_method_type"
+  "de-identification_method_description": "de_identification_method_description"
+  "de-identification_software": "de_identification_software"
+  "treatment_outcome": "response"
+  "file_format": "file_type"
+  "imaging_modality": "image_modality"
+  "proteomic_info_id": "proteomic_info_id"
+# The keyrules are an attempt to make a machine actionable list of what to do with key fields.
+# If compound is No, a UUID will be generated.
+# If compound is Yes, the fields in method will be concatenated
+# If compound is Exempt, use the submitter provided values.
+# There are some instances where a field is not key, but is used in the keyrules.  Add them here as node:field
+"manual_key":
+  "diagnosis":
+    - "diagnosis_id"
+"keyrules":
+  "diagnosis_id":
+    "compound": "Exempt"
+    "method":
+      - "participant_id"
+      - "index"
+  "study_participant_id":
+    "compound": "Yes"
+    "method":
+      - "phs_accession"
+      - "participant_id"
+  "study_diagnosis_id":
+    "compound": "Yes"
+    "method":
+      - "diagnosis_id"
+      - "phs_accession"
+      - "participant_id"
+  "file_id":
+    "compound": "Exempt"
+  "study_link_id":
+    "compound": "Yes"
+    "method":
+      - "phs_accession"
+      - "participant_id"
+      - "file_id"
+  "treatment_id":
+    "compound": "Yes"
+    "method":
+    - "participant_id"
+    - "index"
+  "genomic_info_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "sample_id"
+      - "file_id"
+  "MultiplexMicroscopy_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "index"
+  "NonDICOMMRimages_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "index"
+  "NonDICOMCTimages_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "index"
+  "NonDICOMPETimages_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "index"
+  "NonDICOMradiologyAllModalities_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "index"
+  "NonDICOMpathologyImages_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "index"
+  "proteomic_info_id":
+    "compound": "Yes"
+    "method":
+      - "participant_id"
+      - "sample_id"
+  "data_version_id":
+    "compound": "No"
+  "phs_accession":
+    "compound": "Exempt"
+  "sample_id":
+    "compound": "Exempt"
+  "program_acronym":
+    "compound": "Exempt"
+  
+  
+  
