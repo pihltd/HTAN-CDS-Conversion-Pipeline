@@ -51,16 +51,8 @@ def rowHash(row):
     hashstring = None
     rowlist = row.values.flatten().tolist()
     rowlist = str(rowlist)
-    #print(rowlist)
     hashstring = ''.join(rowlist)
-    #print(hashstring)
-    #for value in rowlist:
-    #    if hashstring == None:
-    #        hashstring = str(value)
-    #    else:
-    #        hashstring = hashstring+"^"+str(value)
     if hashstring is not None:
-        #hashstring = str(hash(hashstring))
         hashstring = hashlib.md5(hashstring.encode()).hexdigest()
     return hashstring
 
@@ -77,12 +69,10 @@ def generateKey(dfrow, rulelist, field, index):
             keystring = dfrow['participant_id']+"_"+str(index)
         elif field =="file_id":
             keystring = "dg.4DFC/"+str(uuid.uuid4())
-            #print(f"Field: {field}\t Keystring {keystring}") 
         elif field in dfrow:
             keystring = str(dfrow[field])
     elif rulelist['compound'] == "Yes":
         for rule in rulelist['method']:
-            #print(rule)
             if keystring is None:
                 if rule == 'index':
                     keystring = str(index)
@@ -104,13 +94,10 @@ def populateKey(cds_df,keyfields, keyrules, compoundvalue):
             if keyrules[keyfield]['compound'] == compoundvalue:
                 keystring = None
                 for index, row in cds_df.iterrows():
-                    #print(f"Key keyrules: {keyrules[keyfield]}\t Keyfield: {keyfield}")
                     keystring = generateKey(row, keyrules[keyfield], keyfield, index)
                     # Have to change program acronym to study acronym because the spreadsheet uses study, not program.
                     if keyfield == 'program_acronym':
                         cds_df.loc[index, 'study_acronym'] = keystring
-                    #elif keyfield == 'file_id':
-                    #    cds_df.loc[index, 'file_id'] = keystring
                     else:
                         cds_df.loc[index, keyfield] = keystring
     return cds_df
@@ -128,7 +115,6 @@ def populateRelations(cds_df, relation_columns, keyrules, compound):
                 keyfield = field
             if keyrules[keyfield]['compound'] == compound:
                 for index, row in cds_df.iterrows():
-                    #print(f"Relations keyrules: {keyrules[keyfield]}\t Keyfield: {keyfield}")
                     keystring = generateKey(row, keyrules[keyfield], keyfield, index)
                     cds_df.loc[index, field] = keystring
     return cds_df
@@ -251,6 +237,10 @@ def main(args):
     if args.verbose:
         print("Dropping all empty columns")
     cds_df = cds_df.dropna(axis=1, how='all')
+    #Drop all duplicate rows
+    if args.verbose:
+        print("Removing duplicate rows from original dataframe")
+    cds_df = cds_df.drop_duplicates()
     
     #Read the target model
     if args.verbose:

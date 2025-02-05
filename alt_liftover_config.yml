@@ -93,6 +93,7 @@
     "method":
       - "participant_id"
       - "sample_id"
+      - "index"
   "data_version_id":
     "compound": "No"
   "phs_accession":
