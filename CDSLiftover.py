@@ -62,7 +62,6 @@ def generateKey(dfrow, rulelist, field, index):
     keystring = None
     
     if rulelist['compound'] == "No":
-        #keystring = str(uuid.uuid4())
         keystring = rowHash(dfrow)
     elif rulelist['compound'] == 'Exempt':
         if field == "diagnosis_id":
@@ -115,7 +114,10 @@ def populateRelations(cds_df, relation_columns, keyrules, compound):
                 keyfield = field
             if keyrules[keyfield]['compound'] == compound:
                 for index, row in cds_df.iterrows():
-                    keystring = generateKey(row, keyrules[keyfield], keyfield, index)
+                    if keyfield == 'program_acronym':
+                        keystring = row['study_acronym']
+                    else:
+                        keystring = row[keyfield]
                     cds_df.loc[index, field] = keystring
     return cds_df
 
