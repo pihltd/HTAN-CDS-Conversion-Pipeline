@@ -19,7 +19,8 @@ def usedNodeLister(cds_df, mapping_df):
             # For each mapping, get the associated node, but only once
             for index, row in tempdf.iterrows():
                 if row['lift_to_node'] not in nodelist:
-                    nodelist.append(row['lift_to_node'])
+                    if row['cde_relationship'] not in ['Unmapped', 'N/A']:
+                        nodelist.append(row['lift_to_node'])
     return nodelist
 
 
@@ -180,6 +181,7 @@ def addManualKeys(keyfields, manualkeys):
 
 def buildLoadsheets(usednodes, target_nodes, target_props, keyfields, relationfields):
     loadsheets = {}
+    print(usednodes)
     for node in usednodes:
         props = target_nodes[node].props
         proplist = list(props.keys())

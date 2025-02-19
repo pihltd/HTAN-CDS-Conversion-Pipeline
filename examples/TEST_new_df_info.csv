@@ -38,7 +38,7 @@ study	cds_secondary_bucket
 study	cds_tertiary_bucket		
 study	number_of_participants	11555662	1.00
 study	number_of_samples	11555663	1.00
-study	study_data_types	12571096	1.00
+study	study_data_types	14824731	1.00
 study	file_types_and_format		
 study	size_of_data_being_uploaded		
 study	acl	11555664	1.00
@@ -57,10 +57,10 @@ participant	crdc_id
 participant	study_participant_id		
 participant	participant_id	12220014	1.00
 participant	race	2192199	1.00
-participant	gender	2200604	3.00
+participant	sex		
 participant	ethnicity	2192217	2.00
 participant	dbGaP_subject_id	14940691	1.00
-participant	sex	7572817	1.00
+participant	sex_at_birth		
 diagnosis	crdc_id		
 diagnosis	study_diagnosis_id		
 diagnosis	diagnosis_id		
@@ -112,6 +112,8 @@ file	submission_version
 file	checksum_value		
 file	checksum_algorithm		
 file	file_mapping_level	11595478	1.00
+file	release_datetime		
+file	is_supplementary_file		
 genomic_info	crdc_id		
 genomic_info	genomic_info_id		
 genomic_info	library_id	11555660	1.00
@@ -124,7 +126,6 @@ genomic_info	custom_assembly_fasta_file_for_alignment	11636299	1.00
 genomic_info	design_description	11529028	1.00
 genomic_info	library_strategy	6273393	1.00
 genomic_info	library_layout	11527735	1.00
-genomic_info	library_source		
 genomic_info	library_selection	6347743	1.00
 genomic_info	platform	6347771	1.00
 genomic_info	instrument_model	11529028	1.00
@@ -133,6 +134,7 @@ genomic_info	reporter_label
 genomic_info	methylation_platform		
 genomic_info	library_source_material	15235975	1.00
 genomic_info	library_source_molecule	15235981	1.00
+image	crdc_id		
 image	study_link_id		
 image	de_identification_method_type	14607284	1.00
 image	de_identification_method_description	14612655	1.00
@@ -149,6 +151,7 @@ image	organ_or_tissue	6161035	1.00
 image	performed_imaging_study_typeCode	14617551	1.00
 image	longitudinal_temporal_event_type	14670294	1.00
 image	longitudinal_temporal_event_offset	14612661	1.00
+MultiplexMicroscopy	crdc_id		
 MultiplexMicroscopy	MultiplexMicroscopy_id		
 MultiplexMicroscopy	acquisition_method_type	6626651	2.00
 MultiplexMicroscopy	tumor_tissue_type	3288124	1.00
@@ -193,6 +196,7 @@ MultiplexMicroscopy	oligo_barcode_upper_strand	14765205	1.00
 MultiplexMicroscopy	oligo_barcode_lower_strand	14765208	1.00
 MultiplexMicroscopy	dilution	14767270	1.00
 MultiplexMicroscopy	concentration	14768386	1.00
+NonDICOMCTimages	crdc_id		
 NonDICOMCTimages	NonDICOMCTimages_id		
 NonDICOMCTimages	CTAquisitionProtocolElement_singleCollimationWidth	2903347	1.00
 NonDICOMCTimages	CTAquisitionProtocolElement_totalCollimationWidth	2903328	1.00
@@ -204,6 +208,7 @@ NonDICOMCTimages	CTAquisitionProtocolElement_kVp	2904496	1.00
 NonDICOMCTimages	CTAquisitionProtocolElement_exposureModulationType_Code	14617524	1.00
 NonDICOMCTimages	CTImageReconstructionProtocolElement_convolutionKernel	2656119	1.00
 NonDICOMCTimages	CTImageReconstructionProtocolElement_convolutionKernelGroupCode	14617525	1.00
+NonDICOMMRimages	crdc_id		
 NonDICOMMRimages	NonDICOMMRimages_id		
 NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode	14645641	1.00
 NonDICOMMRimages	MRImageAcquisitionProtocolElement_diffusionBValue	14607706	1.00
@@ -222,6 +227,7 @@ NonDICOMMRimages	MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndica
 NonDICOMMRimages	MRImageAcquisitionProtocolElement_saturationRecoveryIndicator	14612652	1.00
 NonDICOMMRimages	MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode	14616431	1.00
 NonDICOMMRimages	MRImageReconstructionProtocolElement_complexImageComponentCode	14616432	1.00
+NonDICOMpathologyImages	crdc_id		
 NonDICOMpathologyImages	acquisition_method_type	6626651	2.00
 NonDICOMpathologyImages	tumor_tissue_type	3288124	1.00
 NonDICOMpathologyImages	tissue_fixative	65078	4.00
@@ -232,9 +238,11 @@ NonDICOMpathologyImages	nominal_magnification	7788940	1.00
 NonDICOMpathologyImages	immersion	8058286	1.00
 NonDICOMpathologyImages	lens_numerical_aperture	7788942	1.00
 NonDICOMpathologyImages	NonDICOMpathologyImages_id		
+NonDICOMPETimages	crdc_id		
 NonDICOMPETimages	NonDICOMPETimages_id		
 NonDICOMPETimages	PETImagingAcquisitionProtocolElement_gantryDetectorTilt	2656117	1.00
 NonDICOMPETimages	Radiopharmaceutical_radionuclideCode	14612653	1.00
+NonDICOMradiologyAllModalities	crdc_id		
 NonDICOMradiologyAllModalities	NonDICOMradiologyAllModalities_id		
 NonDICOMradiologyAllModalities	performed_imaging_study_description	2182389	2.10
 NonDICOMradiologyAllModalities	performed_imaging_study_admittingDiagnosisCode	2902328	1.00
@@ -253,6 +261,7 @@ NonDICOMradiologyAllModalities	performed_imaging_study_reconstructionFieldOfView
 NonDICOMradiologyAllModalities	performed_imaging_study_reconstructionDiameter	2182085	1.00
 NonDICOMradiologyAllModalities	performed_imaging_study_sliceThickness	3113185	2.00
 NonDICOMradiologyAllModalities	performed_imaging_study_reconstructionInterval	14612682	1.00
+proteomic	crdc_id		
 proteomic	proteomic_info_id		
 proteomic	aliquot_id	15105438	1.00
 proteomic	analytical_fractions	15112968	1.00
@@ -260,6 +269,7 @@ proteomic	instrument_make	2866141	1.00
 proteomic	proteomic_instrument_model	2413274	2.10
 proteomic	proteomic_design_description	15089939	1.00
 proteomic	manufacturer_model_name	2413274	2.10
+version	crdc_id		
 version	data_version_id		
 version	data_version		
 version	datetime		

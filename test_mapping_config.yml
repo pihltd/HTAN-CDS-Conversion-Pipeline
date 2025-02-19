@@ -2,9 +2,9 @@
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model.yml"
   - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.0/model-desc/cds-model-props.yml"
 "new_version_files":
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.2/model-desc/cds-model.yml"
-  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/5.0.2/model-desc/cds-model-props.yml"
-"mapping_file": '.\examples\CDS_500_2_502_liftover.csv'
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/6.0.2/model-desc/cds-model.yml"
+  - "https://raw.githubusercontent.com/CBIIT/cds-model/refs/heads/6.0.2/model-desc/cds-model-props.yml"
+"mapping_file": '.\examples\CDS_500_2_602_liftover.csv'
 "logdirectory": 'C:\Users\pihltd\Documents\modeltest\liftover\'
 "relationship_columns":
   "diagnosis":
