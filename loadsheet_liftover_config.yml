@@ -1,0 +1,16 @@
+# Similar to CDS liftover config, but different
+"liftovermap": '.\examples\CDS_500_2_602_liftover.csv'
+"output_directory": 'C:\Users\pihltd\Documents\modeltest\InternalLiftover\CDS602\'
+"input_directory": 'C:\Users\pihltd\Documents\modeltest\InternalLiftover\'
+# The section below is the node and the loadsheet that populates that node
+# Output files will use a variant of the same name
+Nodes:
+ - "file": "CDS_file_template.tsv"
+ - "diagnosis": "CDS_diagnosis_template.tsv"
+ - "image": "CDS_image_template.tsv"
+ - "MultiplexMicroscopy": "CDS_MultiplexMicroscopy_template.tsv"
+ - "NonDICOMpathologyImages": "CDS_NonDICOMpathologyImages_template.tsv"
+ - "participant": "CDS_participant_template.tsv"
+ - "proteomic": "CDS_proteomic_template.tsv"
+ - "sample": "CDS_sample_template.tsv"
+ - "study": "CDS_study_template.tsv"
